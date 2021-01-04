@@ -19,8 +19,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Core
             //Todo add your implementation in BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
             _model = new LocalModel();
             
+            Bootstrapper.Bootstrapper.InitServices();
             _model.Init(gameApplicationConfig);
-            Bootstrapper.Bootstrapper.Init(_model);
+            Bootstrapper.Bootstrapper.InitViewModels(_model);
         }
     }
 }

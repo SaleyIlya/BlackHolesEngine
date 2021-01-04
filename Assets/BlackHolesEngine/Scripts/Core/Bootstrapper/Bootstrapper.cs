@@ -4,10 +4,14 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Core.Bootstrapper
 {
     public class Bootstrapper
     {
-        public static void Init(IModel model)
+        public static void InitViewModels(IModel model)
+        {
+            RegisterViewModels(model);
+        }
+        
+        public static void InitServices()
         {
             RegisterServices();
-            RegisterViewModels(model);
         }
 
         private static void RegisterServices()
