@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using BlackHoles.BlackHolesEngine.Scripts.DataModel.Enums;
 using Newtonsoft.Json;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
 {
+    [System.Serializable]
     public class Item
     {
         [JsonProperty("itemId")]

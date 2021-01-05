@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
 {
+    [System.Serializable]
     public class ShopItem
     {
         [JsonProperty("itemId")]

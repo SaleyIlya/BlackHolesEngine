@@ -2,6 +2,7 @@
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
 {
+    [System.Serializable]
     public class PlayerData
     {
         [JsonProperty("player")]

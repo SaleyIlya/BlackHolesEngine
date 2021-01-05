@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
 {
+    [System.Serializable]
     public class InventoryItem
     {
         [JsonProperty("itemId")]
