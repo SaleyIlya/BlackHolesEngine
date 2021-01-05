@@ -1,6 +1,10 @@
-﻿using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
+﻿using System;
+using System.Collections.Generic;
+using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
+using BlackHoles.BlackHolesEngine.Scripts.DataModel;
 using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects;
 using BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService;
+using Newtonsoft.Json;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
 {
@@ -17,17 +21,48 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
 
         public string GetPlayerData()
         {
-            throw new System.NotImplementedException();
+            var obj = _applicationConfig.PlayerData; //todo rework
+            return JsonConvert.SerializeObject(obj);
         }
 
         public void InitPlayerData(string data)
         {
-            throw new System.NotImplementedException();
+            var obj = JsonConvert.DeserializeObject<PlayerData>(data);
+            _applicationConfig.PlayerData = obj; //todo rework
         }
 
         public void InitPlayerData()
         {
-            throw new System.NotImplementedException();
+            var newUserGuid = Guid.NewGuid();
+            var obj = new PlayerData
+            {
+                Player = new Player
+                {
+                    CurrentPlayerLevel = 0,
+                    GameProgress = new GameProgress
+                    {
+                        CurrentGameLevel = 0
+                    },
+                    Inventory = new Inventory
+                    {
+                        PlayerItems = new List<InventoryItem>(),
+                        SelectedItems = new List<InventoryItem>()
+                    },
+                    Money = new Money
+                    {
+                        DonateValue = 0,
+                        Energy = 0,
+                        InGameValue = 0
+                    },
+                    UserId = newUserGuid
+                },
+                User = new User
+                {
+                    Nickname = "SOBAKA_SUTULAYA",
+                    UserId = newUserGuid
+                }
+            };
+            _applicationConfig.PlayerData = obj; //todo rework
         }
     }
 }
