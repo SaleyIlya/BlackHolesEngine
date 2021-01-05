@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
 {
     public class Player
     {
+        [JsonProperty("userId")]
+        public Guid UserId { get; set; }
         [JsonProperty("inventory")]
         public Inventory Inventory { get; set; }
         [JsonProperty("money")]

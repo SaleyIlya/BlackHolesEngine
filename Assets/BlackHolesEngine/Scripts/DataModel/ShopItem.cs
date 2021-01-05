@@ -9,6 +9,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
         [JsonProperty("itemId")]
         public Guid ItemId { get; set; }
         [JsonProperty("cost")]
-        public int Cost { get; set; }
+        public Money Cost { get; set; }
     }
 }
