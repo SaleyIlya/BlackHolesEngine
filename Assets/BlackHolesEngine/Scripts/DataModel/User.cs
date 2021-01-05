@@ -1,14 +1,15 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Sirenix.OdinInspector;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
 {
     [System.Serializable]
     public class User
     {
-        [JsonProperty("userId")]
-        public Guid UserId { get; set; }
-        [JsonProperty("nickname")]
-        public string Nickname { get; set; }
+        [JsonProperty("userId"), ShowInInspector] 
+        public Guid UserId;
+        [JsonProperty("nickname"), ShowInInspector] 
+        public string Nickname;
     }
 }

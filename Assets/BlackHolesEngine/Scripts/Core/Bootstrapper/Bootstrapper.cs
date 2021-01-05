@@ -24,7 +24,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Core.Bootstrapper
 
         private static void RegisterViewModels(IModel model)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

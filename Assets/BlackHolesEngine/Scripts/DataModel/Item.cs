@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BlackHoles.BlackHolesEngine.Scripts.DataModel.Enums;
 using Newtonsoft.Json;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
@@ -9,23 +10,23 @@ namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
     [System.Serializable]
     public class Item
     {
-        [JsonProperty("itemId")]
+        [JsonProperty("itemId"), ShowInInspector]
         public Guid ItemId { get; set; }
-        [JsonProperty("itemType")]
+        [JsonProperty("itemType"), ShowInInspector]
         public InventoryItemType ItemType { get; set; }
-        [JsonProperty("startPropertyValue")]
+        [JsonProperty("startPropertyValue"), ShowInInspector]
         public float StartPropertyValue { get; set; }
-        [JsonProperty("itemMaxLevel")]
+        [JsonProperty("itemMaxLevel"), ShowInInspector]
         public int ItemMaxLevel { get; set; }
-        [JsonProperty("propertyGrowValue")]
+        [JsonProperty("propertyGrowValue"), ShowInInspector]
         public float PropertyGrowValue { get; set; }
-        [JsonProperty("effects")]
+        [JsonProperty("effects"), ShowInInspector]
         public List<ItemEffect> Effects { get; set; }
-        [JsonProperty("name")]
+        [JsonProperty("name"), ShowInInspector]
         public string Name { get; set; }
-        [JsonProperty("description")]
+        [JsonProperty("description"), ShowInInspector]
         public string Description { get; set; }
-        [JsonIgnore]
+        [JsonIgnore, ShowInInspector]
         public Sprite ItemIcon { get; set; }
     }
 }

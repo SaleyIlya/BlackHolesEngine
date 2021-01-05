@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Sirenix.OdinInspector;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
 {
     [System.Serializable]
     public class InventoryItem
     {
-        [JsonProperty("itemId")]
+        [JsonProperty("itemId"), ShowInInspector]
         public Guid ItemId { get; set; }
-        [JsonProperty("itemLevel")]
+        [JsonProperty("itemLevel"), ShowInInspector]
         public int ItemLevel { get; set; }
-        [JsonProperty("count")]
+        [JsonProperty("count"), ShowInInspector]
         public int Count { get; set; }
     }
 }
