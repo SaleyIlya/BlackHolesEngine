@@ -5,6 +5,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
 {
     public interface IModel
     {
-        bool Init(GameApplicationConfig gameApplicationConfigScriptableObject);
+        void Init(GameApplicationConfig gameApplicationConfigScriptableObject);
+        string GetDataToSave();
+        void InitData(string data);
+        void InitData();
     }
 }

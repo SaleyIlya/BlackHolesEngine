@@ -1,4 +1,6 @@
 ﻿using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model;
+using BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService;
+using BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService.Implementation;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.Core.Bootstrapper
 {
@@ -16,7 +18,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Core.Bootstrapper
 
         private static void RegisterServices()
         {
-            throw new System.NotImplementedException();
+            ServiceLocator.ServiceLocator.Default
+                .Register<IModelLoadService>(new LocalModelLoadService());
         }
 
         private static void RegisterViewModels(IModel model)
