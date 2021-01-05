@@ -4,7 +4,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService
 {
     public interface IModelLoadService
     {
-        void SaveData(IModel model, string path);
-        void LoadData(IModel model, string path);
+        void SavePlayerData(IModel model, string path);
+        void LoadPlayerData(IModel model, string path);
     }
 }

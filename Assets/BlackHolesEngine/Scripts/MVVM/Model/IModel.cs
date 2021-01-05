@@ -6,8 +6,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
     public interface IModel
     {
         void Init(GameApplicationConfig gameApplicationConfigScriptableObject);
-        string GetDataToSave();
-        void InitData(string data);
-        void InitData();
+        string GetPlayerData();
+        void InitPlayerData(string data);
+        void InitPlayerData();
     }
 }

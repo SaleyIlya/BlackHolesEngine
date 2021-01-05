@@ -12,20 +12,20 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         public void Init(GameApplicationConfig gameApplicationConfigScriptableObject)
         {
             _applicationConfig = gameApplicationConfigScriptableObject;
-            ServiceLocator.Default.Resolve<IModelLoadService>().LoadData(this, _applicationConfig.SaveLoadPath);
+            ServiceLocator.Default.Resolve<IModelLoadService>().LoadPlayerData(this, _applicationConfig.SaveLoadPath);
         }
 
-        public string GetDataToSave()
+        public string GetPlayerData()
         {
             throw new System.NotImplementedException();
         }
 
-        public void InitData(string data)
+        public void InitPlayerData(string data)
         {
             throw new System.NotImplementedException();
         }
 
-        public void InitData()
+        public void InitPlayerData()
         {
             throw new System.NotImplementedException();
         }

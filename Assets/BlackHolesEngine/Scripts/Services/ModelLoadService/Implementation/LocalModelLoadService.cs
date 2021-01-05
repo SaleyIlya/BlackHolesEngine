@@ -7,7 +7,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService.Implemen
 {
     public class LocalModelLoadService : IModelLoadService
     {
-        public void SaveData(IModel model, string path)
+        public void SavePlayerData(IModel model, string path)
         {
             if (File.Exists(path))
             {
@@ -15,21 +15,21 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService.Implemen
             }
 
             var file = File.Create(path);
-            var stringData = model.GetDataToSave();
+            var stringData = model.GetPlayerData();
             var bytesArray = Encoding.UTF8.GetBytes(stringData);
             file.Write(bytesArray, 0, bytesArray.Length);
         }
 
-        public void LoadData(IModel model, string path)
+        public void LoadPlayerData(IModel model, string path)
         {
             if (File.Exists(path))
             {
                 var data = File.ReadAllText(path);
-                model.InitData(data);
+                model.InitPlayerData(data);
                 return;
             }
             
-            model.InitData();
+            model.InitPlayerData();
         }
     }
 }
