@@ -13,7 +13,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         
         public ReactiveCommand<string> ChangeNicknameCommand { get; }
 
-        public MenuViewModel(LocalModel model)
+        public MenuViewModel(LocalModel model) //todo
         {
             _model = model;
             Player = new ReadOnlyReactiveProperty<Player>(model.Player);

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
 {
-    public interface IModel
+    public interface IModel //todo add reactive properties
     {
         void Init(GameApplicationConfig gameApplicationConfigScriptableObject);
         string GetPlayerData();
