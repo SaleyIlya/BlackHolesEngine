@@ -41,8 +41,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
             var obj = JsonConvert.DeserializeObject<PlayerData>(data);
             _player = new ReactiveProperty<Player>(obj.Player);
             _user = new ReactiveProperty<User>(obj.User);
-
-            //_applicationConfig.PlayerData = obj; //todo rework
         }
 
         public void InitPlayerData()
@@ -79,8 +77,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
             
             _player = new ReactiveProperty<Player>(obj.Player);
             _user = new ReactiveProperty<User>(obj.User);
-            
-            //_applicationConfig.PlayerData = obj; //todo rework
         }
     }
 }

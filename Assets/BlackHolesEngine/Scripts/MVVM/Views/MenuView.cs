@@ -14,8 +14,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
     {
         [SerializeField] private TMP_InputField nickname;
         [SerializeField] private TextMeshProUGUI tmpText;
-        [SerializeField] private Text text;
-        
 
         private MenuViewModel _viewModel;
 
@@ -27,7 +25,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             {
                 _viewModel.ChangeNicknameCommand.Execute(x);
                 nickname.text = "";
-                isTest = true;
             });
 
             _viewModel.User
@@ -37,16 +34,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         private void UpdateText(User user)
         {
             tmpText.text = user.Nickname;
-        }
-
-        bool isTest = false;
-        private void LateUpdate()
-        {
-            if (isTest)
-            {
-                Debug.Log("test");
-                isTest = false;
-            }
         }
     }
 }

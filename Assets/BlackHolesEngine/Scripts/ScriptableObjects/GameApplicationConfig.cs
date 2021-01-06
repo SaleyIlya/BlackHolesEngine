@@ -9,7 +9,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
     public class GameApplicationConfig : ScriptableObject 
     {
         [SerializeField] private string saveLoadPath;
-        [SerializeField] [ShowInInspector] public PlayerData PlayerData; //todo delete
 
         public string SaveLoadPath => Path.Combine(Application.persistentDataPath, saveLoadPath);
     }
