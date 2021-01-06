@@ -5,6 +5,7 @@ using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation;
 using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects;
 using BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.Core
 {
@@ -24,6 +25,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Core
             Bootstrapper.Bootstrapper.InitServices();
             _model.Init(gameApplicationConfig);
             Bootstrapper.Bootstrapper.InitViewModels(_model);
+
+            SceneManager.LoadScene("Menu");
         }
 
         private void OnDestroy()

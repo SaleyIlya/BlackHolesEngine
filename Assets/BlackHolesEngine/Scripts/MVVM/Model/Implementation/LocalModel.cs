@@ -5,11 +5,18 @@ using BlackHoles.BlackHolesEngine.Scripts.DataModel;
 using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects;
 using BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService;
 using Newtonsoft.Json;
+using UniRx;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
 {
     public class LocalModel : IModel
     {
+        private ReactiveProperty<Player> _player;
+        private ReactiveProperty<User> _user;
+
+        public ReactiveProperty<Player> Player => _player;
+        public ReactiveProperty<User> User => _user;
+
         private GameApplicationConfig _applicationConfig;
         private IModelLoadService _modelLoadService;
         
@@ -21,14 +28,21 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
 
         public string GetPlayerData()
         {
-            var obj = _applicationConfig.PlayerData; //todo rework
+            var obj = new PlayerData
+            {
+                Player = _player.Value,
+                User = _user.Value
+            };
             return JsonConvert.SerializeObject(obj);
         }
 
         public void InitPlayerData(string data)
         {
             var obj = JsonConvert.DeserializeObject<PlayerData>(data);
-            _applicationConfig.PlayerData = obj; //todo rework
+            _player = new ReactiveProperty<Player>(obj.Player);
+            _user = new ReactiveProperty<User>(obj.User);
+
+            //_applicationConfig.PlayerData = obj; //todo rework
         }
 
         public void InitPlayerData()
@@ -62,7 +76,11 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
                     UserId = newUserGuid
                 }
             };
-            _applicationConfig.PlayerData = obj; //todo rework
+            
+            _player = new ReactiveProperty<Player>(obj.Player);
+            _user = new ReactiveProperty<User>(obj.User);
+            
+            //_applicationConfig.PlayerData = obj; //todo rework
         }
     }
 }
