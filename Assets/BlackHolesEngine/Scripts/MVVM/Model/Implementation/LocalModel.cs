@@ -13,9 +13,14 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
     {
         private ReactiveProperty<Player> _player;
         private ReactiveProperty<User> _user;
+        private ReactiveProperty<int> _playerPassedLevel;
+        private ReactiveProperty<int> _playerDonateValue;
 
         public ReactiveProperty<Player> Player => _player;
         public ReactiveProperty<User> User => _user;
+        public ReactiveProperty<int> PlayerPassedLevel => _playerPassedLevel;
+
+        public ReactiveProperty<int> PlayerDonateValue => _playerDonateValue;
 
         private GameApplicationConfig _applicationConfig;
         private IModelLoadService _modelLoadService;
@@ -41,6 +46,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
             var obj = JsonConvert.DeserializeObject<PlayerData>(data);
             _player = new ReactiveProperty<Player>(obj.Player);
             _user = new ReactiveProperty<User>(obj.User);
+            _playerDonateValue = new ReactiveProperty<int>(_player.Value.Money.DonateValue);
+            _playerPassedLevel = new ReactiveProperty<int>(_player.Value.GameProgress.CurrentGameLevel);
         }
 
         public void InitPlayerData()

@@ -12,8 +12,19 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
 {
     public class MenuView : MonoBehaviour
     {
-        [SerializeField] private TMP_InputField nickname;
-        [SerializeField] private TextMeshProUGUI tmpText;
+        [Header("UI")]
+        [SerializeField] private Button settingsButton;
+        [SerializeField] private Button shopButton;
+        [SerializeField] private Button inventoryButton;
+        [SerializeField] private Button watchAdvButton;
+        [SerializeField] private Button startButton;
+        [Space]
+        [SerializeField] private TextMeshProUGUI goldValueText;
+        [SerializeField] private TextMeshProUGUI levelText;
+        [Header("Prefabs")] 
+        [SerializeField] private GameObject shopViewPref;
+        [SerializeField] private GameObject inventoryViewPref;
+        [SerializeField] private GameObject watchAdvViewPref;
 
         private MenuViewModel _viewModel;
 
@@ -21,19 +32,38 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         {
             _viewModel = ServiceLocator.Default.Resolve<MenuViewModel>();
             
-            nickname.onEndEdit.AddListener(x =>
-            {
-                _viewModel.ChangeNicknameCommand.Execute(x);
-                nickname.text = "";
-            });
+            shopButton.onClick.AddListener(() => ShowWindow(shopViewPref));
+            inventoryButton.onClick.AddListener(() => ShowWindow(inventoryViewPref));
+            watchAdvButton.onClick.AddListener(() => ShowWindow(watchAdvViewPref));
+            startButton.onClick.AddListener(StartGame);
 
-            _viewModel.User
-                .Subscribe(UpdateText).AddTo(this);
+            _viewModel.PlayerDanateValue
+                .Subscribe(x => UpdateText(goldValueText, x.ToString()))
+                .AddTo(this);
+            
+            _viewModel.PlayerPassedLevel
+                .Subscribe(x => UpdateText(levelText, GetPlayerLevelText(x)))
+                .AddTo(this);
         }
 
-        private void UpdateText(User user)
+        private string GetPlayerLevelText(int passedLevel)
         {
-            tmpText.text = user.Nickname;
+            return $"lvl {passedLevel}";
+        }
+
+        private void ShowWindow(GameObject pref)
+        {
+            Instantiate(pref);
+        }
+
+        private void StartGame()
+        {
+            //Todo setup game start here
+        }
+
+        private void UpdateText(TextMeshProUGUI tmpText, string text)
+        {
+            tmpText.text = text;
         }
     }
 }
