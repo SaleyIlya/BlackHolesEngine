@@ -1,10 +1,7 @@
-﻿using System;
-using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
-using BlackHoles.BlackHolesEngine.Scripts.DataModel;
+﻿using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
 using TMPro;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,7 +45,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
 
         private string GetPlayerLevelText(int passedLevel)
         {
-            return $"lvl {passedLevel}";
+            return $"lvl {passedLevel + 1}";
         }
 
         private void ShowWindow(GameObject pref)
