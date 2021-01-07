@@ -34,7 +34,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             watchAdvButton.onClick.AddListener(() => ShowWindow(watchAdvViewPref));
             startButton.onClick.AddListener(StartGame);
 
-            _viewModel.PlayerDanateValue
+            _viewModel.PlayerInGameValue
                 .Subscribe(x => UpdateText(goldValueText, x.ToString()))
                 .AddTo(this);
             
