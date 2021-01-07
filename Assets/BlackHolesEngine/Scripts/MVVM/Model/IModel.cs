@@ -21,6 +21,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
         ReactiveProperty<int> PlayerEnergy { get; }
         ReactiveProperty<int> PlayerInGameValue { get; }
         ReactiveProperty<string> PlayerNickname { get; }
+        ReactiveProperty<bool> Sound { get; }
+        ReactiveProperty<bool> Vibration { get; }
+        
         Guid UserId { get; }
     }
 }

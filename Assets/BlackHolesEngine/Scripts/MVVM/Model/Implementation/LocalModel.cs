@@ -20,6 +20,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         private ReactiveProperty<int> _playerEnergy;
         private ReactiveProperty<int> _playerInGameValue;
         private ReactiveProperty<string> _playerNickname;
+        private ReactiveProperty<bool> _sound;
+        private ReactiveProperty<bool> _vibration;
         private Guid _userId;
         
         public ReactiveProperty<int> PlayerPassedLevel => _playerPassedLevel;
@@ -30,11 +32,13 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         public ReactiveProperty<int> PlayerEnergy => _playerEnergy;
         public ReactiveProperty<int> PlayerInGameValue => _playerInGameValue;
         public ReactiveProperty<string> PlayerNickname => _playerNickname;
+        public ReactiveProperty<bool> Sound => _sound;
+        public ReactiveProperty<bool> Vibration => _vibration;
+
         public Guid UserId => _userId;
 
         private GameApplicationConfig _applicationConfig;
         private IModelLoadService _modelLoadService;
-        
 
         public void Init(GameApplicationConfig gameApplicationConfigScriptableObject)
         {

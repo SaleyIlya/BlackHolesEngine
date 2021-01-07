@@ -1,6 +1,4 @@
-﻿using BlackHoles.BlackHolesEngine.Scripts.DataModel;
-using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model;
-using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation;
+﻿using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model;
 using UniRx;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
@@ -10,10 +8,18 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         public ReadOnlyReactiveProperty<int> PlayerInGameValue { get; }
         public ReadOnlyReactiveProperty<int> PlayerPassedLevel { get; }
 
+        public ReactiveCommand ChangeSoundValue { get; }
+        public ReactiveCommand ChangeVibrationValue { get; }
+
         public MenuViewModel(IModel model) : base(model)
         {
             PlayerInGameValue = new ReadOnlyReactiveProperty<int>(Model.PlayerInGameValue);
             PlayerPassedLevel = new ReadOnlyReactiveProperty<int>(Model.PlayerPassedLevel);
+            ChangeSoundValue = new ReactiveCommand();
+            ChangeVibrationValue = new ReactiveCommand();
+
+            ChangeSoundValue.Subscribe(_ => { Model.Sound.Value = !Model.Sound.Value; });
+            ChangeVibrationValue.Subscribe(_ => { Model.Vibration.Value = !Model.Vibration.Value; });
         }
     }
 }
