@@ -1,4 +1,5 @@
-﻿using BlackHoles.BlackHolesEngine.Scripts.DataModel;
+﻿using System;
+using BlackHoles.BlackHolesEngine.Scripts.DataModel;
 using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects;
 using UniRx;
 using UnityEngine;
@@ -14,7 +15,12 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
         
         ReactiveProperty<int> PlayerPassedLevel { get; }
         ReactiveProperty<int> PlayerDonateValue { get; }
-        ReactiveProperty<Player> Player { get; }
-        ReactiveProperty<User> User { get; }
+        ReactiveProperty<float> CurrentPlayerLevel { get; }
+        ReactiveCollection<InventoryItem> PlayerItems { get; }
+        ReactiveCollection<InventoryItem> SelectedPlayerItems { get; }
+        ReactiveProperty<int> PlayerEnergy { get; }
+        ReactiveProperty<int> PlayerInGameValue { get; }
+        ReactiveProperty<string> PlayerNickname { get; }
+        Guid UserId { get; }
     }
 }
