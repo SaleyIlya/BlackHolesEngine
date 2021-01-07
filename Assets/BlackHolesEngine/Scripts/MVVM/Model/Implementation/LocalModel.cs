@@ -43,7 +43,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         public void Init(GameApplicationConfig gameApplicationConfigScriptableObject)
         {
             _applicationConfig = gameApplicationConfigScriptableObject;
-            ServiceLocator.Default.Resolve<IModelLoadService>().LoadPlayerData(this, _applicationConfig.SaveLoadPath);
+            ServiceLocator.Default.Resolve<IModelLoadService>().LoadPlayerData(this, 
+                _applicationConfig.PlayerDataPath,
+                _applicationConfig.PlayerSettingsPath);
         }
 
         public string GetPlayerData()
@@ -79,30 +81,44 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
             return JsonConvert.SerializeObject(obj);
         }
 
-        public void InitPlayerData(string data)
+        public string GetPlayerSettings()
         {
-            var obj = JsonConvert.DeserializeObject<PlayerData>(data);
-
-            FillModel(obj);
+            var obj = new Settings
+            {
+                Sound = _sound.Value,
+                Vibration = _vibration.Value
+            };
+            return JsonConvert.SerializeObject(obj);
         }
 
-        private void FillModel(PlayerData obj)
+        public void InitPlayerData(string playerData, string playerSettings)
         {
-            _playerDonateValue = new ReactiveProperty<int>(obj.Player.Money.DonateValue);
-            _playerPassedLevel = new ReactiveProperty<int>(obj.Player.GameProgress.CurrentGameLevel);
-            _currentPlayerLevel = new ReactiveProperty<float>(obj.Player.CurrentPlayerLevel);
-            _playerItems = new ReactiveCollection<InventoryItem>(obj.Player.Inventory.PlayerItems);
-            _selectedPlayerItems = new ReactiveCollection<InventoryItem>(obj.Player.Inventory.SelectedItems);
-            _playerEnergy = new ReactiveProperty<int>(obj.Player.Money.Energy);
-            _playerInGameValue = new ReactiveProperty<int>(obj.Player.Money.InGameValue);
-            _playerNickname = new ReactiveProperty<string>(obj.User.Nickname);
-            _userId = obj.User.UserId;
+            var data = JsonConvert.DeserializeObject<PlayerData>(playerData);
+            var settings = JsonConvert.DeserializeObject<Settings>(playerSettings);
+
+            FillModel(data, settings);
+        }
+
+        private void FillModel(PlayerData data, Settings settings)
+        {
+            _playerDonateValue = new ReactiveProperty<int>(data.Player.Money.DonateValue);
+            _playerPassedLevel = new ReactiveProperty<int>(data.Player.GameProgress.CurrentGameLevel);
+            _currentPlayerLevel = new ReactiveProperty<float>(data.Player.CurrentPlayerLevel);
+            _playerItems = new ReactiveCollection<InventoryItem>(data.Player.Inventory.PlayerItems);
+            _selectedPlayerItems = new ReactiveCollection<InventoryItem>(data.Player.Inventory.SelectedItems);
+            _playerEnergy = new ReactiveProperty<int>(data.Player.Money.Energy);
+            _playerInGameValue = new ReactiveProperty<int>(data.Player.Money.InGameValue);
+            _playerNickname = new ReactiveProperty<string>(data.User.Nickname);
+            _userId = data.User.UserId;
+
+            _sound = new ReactiveProperty<bool>(settings.Sound);
+            _vibration = new ReactiveProperty<bool>(settings.Vibration);
         }
 
         public void InitPlayerData()
         {
             var newUserGuid = Guid.NewGuid();
-            var obj = new PlayerData
+            var data = new PlayerData
             {
                 Player = new Player
                 {
@@ -130,8 +146,13 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
                     UserId = newUserGuid
                 }
             };
+            var settings = new Settings
+            {
+                Sound = true,
+                Vibration = true
+            };
             
-            FillModel(obj);
+            FillModel(data, settings);
         }
     }
 }

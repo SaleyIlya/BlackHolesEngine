@@ -2,7 +2,6 @@
 using BlackHoles.BlackHolesEngine.Scripts.DataModel;
 using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects;
 using UniRx;
-using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
 {
@@ -10,7 +9,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
     {
         void Init(GameApplicationConfig gameApplicationConfigScriptableObject);
         string GetPlayerData();
-        void InitPlayerData(string data);
+        string GetPlayerSettings();
+        void InitPlayerData(string playerData, string playerSettings);
         void InitPlayerData();
         
         ReactiveProperty<int> PlayerPassedLevel { get; }

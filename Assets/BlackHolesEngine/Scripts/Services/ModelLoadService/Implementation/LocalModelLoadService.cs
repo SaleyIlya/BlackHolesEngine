@@ -7,7 +7,13 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService.Implemen
 {
     public class LocalModelLoadService : IModelLoadService
     {
-        public void SavePlayerData(IModel model, string path)
+        public void SavePlayerData(IModel model, string playerDataPath, string playerSettingsPath)
+        {
+            SaveDataInPath(model.GetPlayerData(), playerDataPath);
+            SaveDataInPath(model.GetPlayerSettings(), playerSettingsPath);
+        }
+        
+        private void SaveDataInPath(string data, string path)
         {
             if (File.Exists(path))
             {
@@ -15,17 +21,28 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService.Implemen
             }
 
             var file = File.Create(path);
-            var stringData = model.GetPlayerData();
+            var stringData = data;
             var bytesArray = Encoding.UTF8.GetBytes(stringData);
             file.Write(bytesArray, 0, bytesArray.Length);
         }
 
-        public void LoadPlayerData(IModel model, string path)
+        public void LoadPlayerData(IModel model, string playerDataPath, string playerSettingsPath)
         {
-            if (File.Exists(path))
+            string playerData = null;
+            string playerSettings = null;
+            
+            if (File.Exists(playerDataPath))
             {
-                var data = File.ReadAllText(path);
-                model.InitPlayerData(data);
+                playerData = File.ReadAllText(playerDataPath);
+            }
+            if (File.Exists(playerSettingsPath))
+            {
+                playerSettings = File.ReadAllText(playerSettingsPath);
+            }
+
+            if (!string.IsNullOrEmpty(playerData) && !string.IsNullOrEmpty(playerSettings))
+            {
+                model.InitPlayerData(playerData, playerSettings);
                 return;
             }
             

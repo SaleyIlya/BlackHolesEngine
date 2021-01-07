@@ -1,5 +1,4 @@
-﻿using System;
-using BlackHoles.BlackHolesEngine.Scripts.Core.Singleton;
+﻿using BlackHoles.BlackHolesEngine.Scripts.Core.Singleton;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation;
 using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects;
@@ -32,7 +31,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Core
         private void OnDestroy()
         {
             ServiceLocator.ServiceLocator.Default.Resolve<IModelLoadService>()
-                .SavePlayerData(_model, gameApplicationConfig.SaveLoadPath);
+                .SavePlayerData(_model, gameApplicationConfig.PlayerDataPath, gameApplicationConfig.PlayerSettingsPath);
         }
     }
 }

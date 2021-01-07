@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b976bc3dbe449b9fde7292d163dc1e, type: 3}
   m_Name: GameApplicationConfig
   m_EditorClassIdentifier: 
-  saveLoadPath: save.txt
+  playerDataPath: PlayerData.txt
+  playerSettingsPath: PlayerSettings.txt
