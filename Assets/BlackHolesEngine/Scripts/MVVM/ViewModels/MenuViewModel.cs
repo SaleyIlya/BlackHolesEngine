@@ -7,6 +7,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
     {
         public ReadOnlyReactiveProperty<int> PlayerInGameValue { get; }
         public ReadOnlyReactiveProperty<int> PlayerPassedLevel { get; }
+        public ReadOnlyReactiveProperty<bool> Sound { get; }
+        public ReadOnlyReactiveProperty<bool>  Vibration { get; }
 
         public ReactiveCommand ChangeSoundValue { get; }
         public ReactiveCommand ChangeVibrationValue { get; }
@@ -15,6 +17,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         {
             PlayerInGameValue = new ReadOnlyReactiveProperty<int>(Model.PlayerInGameValue);
             PlayerPassedLevel = new ReadOnlyReactiveProperty<int>(Model.PlayerPassedLevel);
+            Sound = new ReadOnlyReactiveProperty<bool>(Model.Sound);
+            Vibration = new ReadOnlyReactiveProperty<bool>(Model.Vibration);
+            
             ChangeSoundValue = new ReactiveCommand();
             ChangeVibrationValue = new ReactiveCommand();
 
