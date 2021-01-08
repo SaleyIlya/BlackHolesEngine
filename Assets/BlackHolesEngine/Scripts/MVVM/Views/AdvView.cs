@@ -27,6 +27,13 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         [SerializeField] private int priceInGameValue;
         [SerializeField] private int priceDonateValue;
         [SerializeField] private int priceEnergyValue;
+        [Space]
+        [SerializeField] private string priceCloseMessage;
+        [SerializeField] private string priceCloseButtonLabel;
+        [SerializeField] private string cancelCloseMessage;
+        [SerializeField] private string cancelCloseOkButtonLabel;
+        [SerializeField] private string cancelCloseExitButtonLabel;
+        
 
         private AdvViewModel _viewModel;
         private IDisposable _disposable;
@@ -76,7 +83,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         private void GetPriceButtonAction()
         {
             var messageBox = Instantiate(messageBoxPref);
-            messageBox.InitWithOneButton("message", "n1ce!", GetPrice);
+            messageBox.InitWithOneButton(priceCloseMessage, priceCloseButtonLabel, GetPrice);
         }
 
         private void GetPrice()
@@ -100,9 +107,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             {
                 _isTimerRun = false;
             }
-            messageBox.InitWithTwoButtons("message",
-                "get it!", ContinueWatching,
-                "close anyway", CloseWindow);
+            messageBox.InitWithTwoButtons(cancelCloseMessage,
+                cancelCloseOkButtonLabel, ContinueWatching,
+                cancelCloseExitButtonLabel, CloseWindow);
         }
 
         private void ContinueWatching()

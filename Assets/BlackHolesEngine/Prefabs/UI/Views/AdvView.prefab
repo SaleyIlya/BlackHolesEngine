@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 4784960428771258724}
   - component: {fileID: 3496212324173236981}
   m_Layer: 5
-  m_Name: AdvPanel
+  m_Name: AdvView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,6 +824,11 @@ MonoBehaviour:
   priceInGameValue: 100
   priceDonateValue: 0
   priceEnergyValue: 0
+  priceCloseMessage: You just earned 100 gold coins!!!
+  priceCloseButtonLabel: N1CE!
+  cancelCloseMessage: Are you sure? In case of closure, the award will not be received
+  cancelCloseOkButtonLabel: ' Continue watching'
+  cancelCloseExitButtonLabel: Close anyway
 --- !u!1 &6910586775663500271
 GameObject:
   m_ObjectHideFlags: 0
