@@ -44,7 +44,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Core.Bootstrapper
         private static void RegisterViewModels(IModel model)
         {
             ServiceLocator.ServiceLocator.Default
-                .Register(new MenuViewModel(model as LocalModel)); //todo
+                .Register(new MenuViewModel(model))
+                .Register(new AdvViewModel(model));
         }
     }
 }
