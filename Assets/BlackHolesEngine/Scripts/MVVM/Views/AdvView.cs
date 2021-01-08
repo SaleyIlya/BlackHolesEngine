@@ -18,16 +18,22 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         [SerializeField] private GameObject closeButtonObject;
         [SerializeField] private GameObject getPriceButtonObject;
         [SerializeField] private GameObject advViewWindow;
+        [Space]
+        [SerializeField] private Image closeButtonImage;
         [Header("Prefabs")]
         [SerializeField] private MessageBoxView messageBoxPref;
         [Header("Settings")]
         [SerializeField] private float advTime;
-        [SerializeField] private Money priceValue;
+        [SerializeField] private int priceInGameValue;
+        [SerializeField] private int priceDonateValue;
+        [SerializeField] private int priceEnergyValue;
 
         private AdvViewModel _viewModel;
         private bool _canGetPrice = false;
         private bool _isTimerRun = true;
         private float _timerValue = 0f;
+
+        private IDisposable _disposable;
 
         private void Awake()
         {
@@ -42,15 +48,15 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             getPriceButton.onClick.AddListener(GetPriceButtonAction);
             closeButton.onClick.AddListener(CloseWindow);
 
-            Observable.FromMicroCoroutine(AdvTimerCoroutine)
-                .Do(_ => OnAdvTimerProcess())
-                .DoOnCompleted(OnAdvTimerEnd);
+            _disposable = Observable.FromCoroutine(AdvTimerCoroutine)
+                .Subscribe(_ => OnAdvTimerEnd());
         }
 
         private IEnumerator AdvTimerCoroutine()
         {
             while (_timerValue < advTime)
             {
+                closeButtonImage.fillAmount = _timerValue / advTime;
                 if (_isTimerRun)
                 {
                     _timerValue += Time.deltaTime;
@@ -59,11 +65,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             }
         }
 
-        private void OnAdvTimerProcess()
-        {
-            Debug.Log(_timerValue);
-        }
-        
         private void OnAdvTimerEnd()
         {
             _isTimerRun = false;
@@ -77,13 +78,23 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             if (!_canGetPrice) 
                 return;
             
-            _viewModel.GetMoneyCommand.Execute(priceValue);
+            _viewModel.GetMoneyCommand.Execute(new Money
+            {
+                DonateValue = priceDonateValue,
+                Energy = priceEnergyValue,
+                InGameValue = priceInGameValue
+            });
             CloseWindow();
         }
 
         private void CloseWindow()
         {
             Destroy(advViewWindow);
+        }
+
+        private void OnDisable()
+        {
+            _disposable.Dispose();
         }
     }
 }
