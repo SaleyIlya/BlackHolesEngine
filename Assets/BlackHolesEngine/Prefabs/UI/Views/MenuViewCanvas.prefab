@@ -907,6 +907,7 @@ GameObject:
   - component: {fileID: 8796404871715000363}
   - component: {fileID: 428463921220636200}
   - component: {fileID: 7872725900720986165}
+  - component: {fileID: 5806960549155037808}
   m_Layer: 5
   m_Name: VibrationButton
   m_TagString: Untagged
@@ -1013,6 +1014,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5806960549155037808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530813889052773421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812fa62b7c21492e93882dad2e253ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonType: 1
+  button: {fileID: 7872725900720986165}
+  buttonImage: {fileID: 428463921220636200}
+  activeSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  inactiveSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &3586959322072261700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,6 +1600,7 @@ GameObject:
   - component: {fileID: 3815429722618013977}
   - component: {fileID: 1433275817459196439}
   - component: {fileID: 3532523340018792858}
+  - component: {fileID: 6862194125832764073}
   m_Layer: 5
   m_Name: SoundButton
   m_TagString: Untagged
@@ -1688,6 +1707,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6862194125832764073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687355218718334719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812fa62b7c21492e93882dad2e253ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonType: 0
+  button: {fileID: 3532523340018792858}
+  buttonImage: {fileID: 1433275817459196439}
+  activeSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  inactiveSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &6777880181270060546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,8 +1841,6 @@ MonoBehaviour:
   inventoryButton: {fileID: 2412767626607968742}
   watchAdvButton: {fileID: 3546360609860177199}
   startButton: {fileID: 1006866379486147573}
-  soundButton: {fileID: 3532523340018792858}
-  vibrationButton: {fileID: 7872725900720986165}
   goldValueText: {fileID: 2539743816411645713}
   levelText: {fileID: 157496896042016170}
   soundGameObject: {fileID: 6687355218718334719}
@@ -2174,6 +2208,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b960af6a08c4bdc4297435543111904c, type: 3}
+--- !u!224 &6773554079300393378 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4260354655889280745, guid: b960af6a08c4bdc4297435543111904c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7286734520901916491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2539743816411645713 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5053414797158731866, guid: b960af6a08c4bdc4297435543111904c,
@@ -2186,9 +2226,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &6773554079300393378 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4260354655889280745, guid: b960af6a08c4bdc4297435543111904c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7286734520901916491}
-  m_PrefabAsset: {fileID: 0}

@@ -16,8 +16,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         [SerializeField] private Button inventoryButton;
         [SerializeField] private Button watchAdvButton;
         [SerializeField] private Button startButton;
-        [SerializeField] private Button soundButton;
-        [SerializeField] private Button vibrationButton;
         [Space]
         [SerializeField] private TextMeshProUGUI goldValueText;
         [SerializeField] private TextMeshProUGUI levelText;
@@ -47,8 +45,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             inventoryButton.onClick.AddListener(() => ShowWindow(inventoryViewPref));
             watchAdvButton.onClick.AddListener(() => ShowWindow(watchAdvViewPref));
             startButton.onClick.AddListener(StartGame);
-            soundButton.onClick.AddListener(() => _viewModel.ChangeSoundValue.Execute());
-            vibrationButton.onClick.AddListener(() => _viewModel.ChangeVibrationValue.Execute());
 
             _viewModel.PlayerInGameValue
                 .Subscribe(x => UpdateText(goldValueText, x.ToString()))
