@@ -29,11 +29,11 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         [SerializeField] private int priceEnergyValue;
 
         private AdvViewModel _viewModel;
+        private IDisposable _disposable;
+        
         private bool _canGetPrice = false;
         private bool _isTimerRun = true;
         private float _timerValue = 0f;
-
-        private IDisposable _disposable;
 
         private void Awake()
         {
