@@ -363,8 +363,9 @@ GameObject:
   - component: {fileID: 3636396300030938528}
   - component: {fileID: 6820586829600095825}
   - component: {fileID: 4784960428771258724}
+  - component: {fileID: 6324450072115121880}
   m_Layer: 5
-  m_Name: GoldForAdvPanel
+  m_Name: WatchAdvPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,6 +452,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
+--- !u!114 &6324450072115121880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633844679623780745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08dc0aa954c84d7a9913c1910f3d55ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeButton: {fileID: 1742924594661952942}
+  watchButton: {fileID: 40738991608026256}
+  watchAdvViewObj: {fileID: 6633844679623780745}
+  advPanelView: {fileID: 8494586925048779103, guid: 6f907715249703e47aca03724e28ff04,
+    type: 3}
 --- !u!1 &6910586775663500271
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,3 +752,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 695470061051955768}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1742924594661952942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1267432319622694806, guid: a0d2f007332b2f5429f7c10a3b9e4fdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 695470061051955768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
