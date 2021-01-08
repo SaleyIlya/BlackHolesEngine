@@ -46,7 +46,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             _viewModel = ServiceLocator.Default.Resolve<AdvViewModel>();
             
             getPriceButton.onClick.AddListener(GetPriceButtonAction);
-            closeButton.onClick.AddListener(CloseWindow);
+            closeButton.onClick.AddListener(CloseWindowButtonAction);
 
             _disposable = Observable.FromCoroutine(AdvTimerCoroutine)
                 .Subscribe(_ => OnAdvTimerEnd());
@@ -75,6 +75,12 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
 
         private void GetPriceButtonAction()
         {
+            var messageBox = Instantiate(messageBoxPref);
+            messageBox.InitWithOneButton("message", "n1ce!", GetPrice);
+        }
+
+        private void GetPrice()
+        {
             if (!_canGetPrice) 
                 return;
             
@@ -85,6 +91,26 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
                 InGameValue = priceInGameValue
             });
             CloseWindow();
+        }
+
+        private void CloseWindowButtonAction()
+        {
+            var messageBox = Instantiate(messageBoxPref);
+            if (!_canGetPrice)
+            {
+                _isTimerRun = false;
+            }
+            messageBox.InitWithTwoButtons("message",
+                "get it!", ContinueWatching,
+                "close anyway", CloseWindow);
+        }
+
+        private void ContinueWatching()
+        {
+            if (!_canGetPrice)
+            {
+                _isTimerRun = true;
+            }
         }
 
         private void CloseWindow()
