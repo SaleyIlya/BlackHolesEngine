@@ -46,6 +46,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
                     Model.PlayerItems.Remove(pursuedItem);
                     Model.PlayerItems.Add(inventoryItem);
                 }
+
+                Model.PlayerInGameValue.Value -= item.Cost.InGameValue;
             });
 
             SelectItemCommand.Subscribe(item =>

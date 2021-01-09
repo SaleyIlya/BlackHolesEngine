@@ -135,10 +135,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             var gameItems = _viewModel.GameItems
                 .Where(x => x.Value.ItemType == _currentItemType)
                 .ToDictionary(x => x.Key, y => y.Value);
-            var selectedItems = _viewModel.PlayerSelectedItems.ToList()
+            var selectedItems = _viewModel.PlayerSelectedItems
                 .Where(x => gameItems.ContainsKey(x.ItemId))
                 .ToDictionary(x => x.ItemId, y => y);
-            var notSelectedItems = _viewModel.PlayerInventoryItems.ToList()
+            var notSelectedItems = _viewModel.PlayerInventoryItems
                 .Where(x => gameItems.ContainsKey(x.ItemId) && !selectedItems.ContainsKey(x.ItemId))
                 .ToDictionary(x => x.ItemId, y => y);
 
@@ -165,18 +165,28 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             var gameItems = _viewModel.GameItems
                 .Where(x => x.Value.ItemType == _currentItemType)
                 .ToDictionary(x => x.Key, y => y.Value);
-            var inventoryItems = _viewModel.PlayerInventoryItems.ToList()
+            var inventoryItems = _viewModel.PlayerInventoryItems
                 .Where(x => gameItems.ContainsKey(x.ItemId))
                 .ToDictionary(x => x.ItemId, y => y);
-            var shopItems = _viewModel.ShopItems.ToList()
-                .Where(x => gameItems.ContainsKey(x.Key) && !inventoryItems.ContainsKey(x.Key))
-                .OrderBy(x => x.Value.Cost)
+            var shopItems = _viewModel.ShopItems
+                .Where(x => gameItems.ContainsKey(x.Key))
+                .Where(x => !inventoryItems.ContainsKey(x.Key))
                 .ToDictionary(x => x.Key, y => y.Value);
+            
+            var sortedDictionary = new SortedDictionary<int, Guid>();
 
             foreach (var shopItem in shopItems)
             {
-                bool isLocked = shopItem.Value.Cost.InGameValue > _viewModel.PlayerInGameValue.Value;
-                CreateItem(gameItems[shopItem.Key], shopItem.Value, isLocked);
+                sortedDictionary.Add(shopItem.Value.Cost.InGameValue, shopItem.Key);
+            }
+
+            foreach (var item in sortedDictionary)
+            {
+                var guid = item.Value;
+                var shopItem = shopItems[guid];
+                
+                bool isLocked = shopItem.Cost.InGameValue > _viewModel.PlayerInGameValue.Value;
+                CreateItem(gameItems[guid], shopItem, isLocked);
             }
         }
         
