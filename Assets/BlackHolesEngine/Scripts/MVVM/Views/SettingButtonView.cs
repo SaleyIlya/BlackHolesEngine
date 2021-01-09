@@ -1,18 +1,13 @@
 ﻿using System;
 using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
+using BlackHoles.BlackHolesEngine.Scripts.MVVM.Views.Enums;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
 {
-    public enum SettingButtonType
-    {
-        Sound,
-        Vibration
-    }
-    
     public class SettingButtonView : MonoBehaviour
     {
         [SerializeField] private SettingButtonType buttonType;

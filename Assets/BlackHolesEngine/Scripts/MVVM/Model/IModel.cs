@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using BlackHoles.BlackHolesEngine.Scripts.DataModel;
 using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects;
 using UniRx;
@@ -25,5 +27,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
         ReactiveProperty<bool> Vibration { get; }
         
         Guid UserId { get; }
+        
+        ReadOnlyDictionary<Guid, Item> GameItems { get; }
+        ReadOnlyDictionary<Guid, ShopItem> ShopItems { get; }
     }
 }

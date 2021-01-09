@@ -1845,9 +1845,9 @@ MonoBehaviour:
   levelText: {fileID: 157496896042016170}
   soundGameObject: {fileID: 6687355218718334719}
   vibrationGameObject: {fileID: 3530813889052773421}
-  shopViewPref: {fileID: 8494586925048779103, guid: 6f907715249703e47aca03724e28ff04,
+  shopViewPref: {fileID: 8494586925048779103, guid: f8fe20556d77e2f4693bb2f4eb203859,
     type: 3}
-  inventoryViewPref: {fileID: 8494586925048779103, guid: 6f907715249703e47aca03724e28ff04,
+  inventoryViewPref: {fileID: 8494586925048779103, guid: 1e4b2d848067d9741a74d798ed5ee3ba,
     type: 3}
   watchAdvViewPref: {fileID: 6633844679623780745, guid: 83eb72107e7cf2d4f90e7ec9da638b75,
     type: 3}

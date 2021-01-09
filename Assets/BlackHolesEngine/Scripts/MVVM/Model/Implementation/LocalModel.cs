@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
 using BlackHoles.BlackHolesEngine.Scripts.DataModel;
@@ -23,6 +24,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         private ReactiveProperty<bool> _sound;
         private ReactiveProperty<bool> _vibration;
         private Guid _userId;
+        private ReadOnlyDictionary<Guid, Item> _gameItems;
+        private ReadOnlyDictionary<Guid, ShopItem> _shopItems;
         
         public ReactiveProperty<int> PlayerPassedLevel => _playerPassedLevel;
         public ReactiveProperty<int> PlayerDonateValue => _playerDonateValue;
@@ -36,6 +39,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         public ReactiveProperty<bool> Vibration => _vibration;
 
         public Guid UserId => _userId;
+        public ReadOnlyDictionary<Guid, Item> GameItems => _gameItems;
+        public ReadOnlyDictionary<Guid, ShopItem> ShopItems => _shopItems;
 
         private GameApplicationConfig _applicationConfig;
         private IModelLoadService _modelLoadService;
@@ -43,6 +48,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         public void Init(GameApplicationConfig gameApplicationConfigScriptableObject)
         {
             _applicationConfig = gameApplicationConfigScriptableObject;
+            _gameItems = gameApplicationConfigScriptableObject.GetGameItems();
+            _shopItems = gameApplicationConfigScriptableObject.GetShopItems();
             ServiceLocator.Default.Resolve<IModelLoadService>().LoadPlayerData(this, 
                 _applicationConfig.PlayerDataPath,
                 _applicationConfig.PlayerSettingsPath);

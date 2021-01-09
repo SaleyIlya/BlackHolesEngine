@@ -14,3 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDataPath: PlayerData.txt
   playerSettingsPath: PlayerSettings.txt
+  gameItems: []
+  shopItems: []
+  guids:
+  - 6608dbc6-635f-4811-869c-84892dbe27be
+  - 22665f95-47db-422f-9bad-6dad148da243
+  - 76fb697f-0327-4085-81a6-18eea80935f0
+  - 51f44c79-3221-42ce-973c-f24dd0a30f6b
