@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.ScriptableLibrary
@@ -9,7 +10,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.ScriptableLibrar
         [SerializeField] private List<TPair> library;
 
         private Dictionary<TKey, TValue> _libraryDictionary;
-        
-        public Dictionary<TKey, TValue> Library => _libraryDictionary ??= library.GetDictionary();
+        public Dictionary<TKey, TValue> Library 
+            => _libraryDictionary ?? (_libraryDictionary = library.GetDictionary());
     }
 }

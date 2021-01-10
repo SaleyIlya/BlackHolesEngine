@@ -9,7 +9,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.I
     [CreateAssetMenu(fileName = "Item", menuName = "BlackHolesEngine/CommonObjects/Items/Item", order = 0)]
     public class ItemScriptableObject : ScriptableObject
     {
-        [SerializeField] private Guid itemId;
+        [SerializeField] private string itemId;
         [Header("Coast")]
         [SerializeField] private int inGameValueCoast;
         [SerializeField] private int donateValueCoast;
@@ -29,7 +29,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.I
         {
             return new ShopItem
             {
-                ItemId = itemId,
+                ItemId = Guid.Parse(itemId),
                 Cost = new Money
                 {
                     InGameValue = inGameValueCoast,
@@ -43,7 +43,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.I
         {
             return new Item
             {
-                ItemId = itemId,
+                ItemId = Guid.Parse(itemId),
                 Name = itemName,
                 Description = description,
                 Effects = effects,

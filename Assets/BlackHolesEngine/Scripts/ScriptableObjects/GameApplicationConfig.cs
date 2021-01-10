@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using BlackHoles.BlackHolesEngine.Scripts.DataModel;
-using Sirenix.OdinInspector;
+using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.Items;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
@@ -14,32 +14,21 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
     {
         [SerializeField] private string playerDataPath;
         [SerializeField] private string playerSettingsPath;
-        [SerializeField] private List<Item> gameItems;
-        [SerializeField] private List<ShopItem> shopItems;
-        [SerializeField] private List<string> guids;
-        
+        [SerializeField] private ItemLibraryScriptableObject itemsLibrary;
 
         public string PlayerDataPath => Path.Combine(Application.persistentDataPath, playerDataPath);
         public string PlayerSettingsPath => Path.Combine(Application.persistentDataPath, playerSettingsPath);
 
         public ReadOnlyDictionary<Guid, Item> GetGameItems()
         {
-            for (int i = 0; i < gameItems.Count; i++)
-            {
-                gameItems[i].ItemId = Guid.Parse(guids[i]);
-            }
-            var gameItemsDictionary = gameItems.ToDictionary(x => x.ItemId, y => y);
-            return new ReadOnlyDictionary<Guid, Item>(gameItemsDictionary);
+            var dictionary = itemsLibrary.Library.ToDictionary(x => Guid.Parse(x.Key), y => y.Value.GetItem());
+            return new ReadOnlyDictionary<Guid, Item>(dictionary);
         }
         
         public ReadOnlyDictionary<Guid, ShopItem> GetShopItems()
         {
-            for (int i = 0; i < shopItems.Count; i++)
-            {
-                shopItems[i].ItemId = Guid.Parse(guids[i]);
-            }
-            var shopDictionary = shopItems.ToDictionary(x => x.ItemId, y => y);
-            return new ReadOnlyDictionary<Guid, ShopItem>(shopDictionary);
+            return new ReadOnlyDictionary<Guid, ShopItem>(
+                itemsLibrary.Library.ToDictionary(x => Guid.Parse(x.Key), y => y.Value.GetShopItem()));
         }
     }
 }
