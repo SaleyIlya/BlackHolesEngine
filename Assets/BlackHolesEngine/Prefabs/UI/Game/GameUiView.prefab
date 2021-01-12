@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 6777880181270060550}
   - component: {fileID: 6777880181270060551}
   - component: {fileID: 6777880181270060544}
+  - component: {fileID: 8634056704699107048}
   m_Layer: 5
   m_Name: GameUiView
   m_TagString: Untagged
@@ -366,6 +367,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
+--- !u!114 &8634056704699107048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777880181270060546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ea1b72638d49c4bf5c0fb8c1c827b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseButton: {fileID: 3471610839596365574}
+  hpLabel: {fileID: 4866326714830532224}
+  hpImage: {fileID: 7325879324729659387}
+  gamePauseViewPref: {fileID: 1639558733284786413, guid: 05f02d3dd9ee7bd4da7e4f0fa545dd77,
+    type: 3}
 --- !u!1 &7504220455813723783
 GameObject:
   m_ObjectHideFlags: 0
