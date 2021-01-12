@@ -27,6 +27,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
         ReactiveProperty<bool> Vibration { get; }
         
         Guid UserId { get; }
+        GameData GameData { get; }
         
         ReadOnlyDictionary<Guid, Item> GameItems { get; }
         ReadOnlyDictionary<Guid, ShopItem> ShopItems { get; }

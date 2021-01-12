@@ -4,6 +4,7 @@ using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
@@ -26,6 +27,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         [SerializeField] private GameObject shopViewPref;
         [SerializeField] private GameObject inventoryViewPref;
         [SerializeField] private GameObject watchAdvViewPref;
+        [Header("GameSceneName")] 
+        [SerializeField] private string gameSceneName;
+
+        
 
         private MenuViewModel _viewModel;
         private bool _isSettingHide = true;
@@ -53,6 +58,13 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             _viewModel.PlayerPassedLevel
                 .Subscribe(x => UpdateText(levelText, GetPlayerLevelText(x)))
                 .AddTo(this);
+        }
+
+        private void LoadGameScene()
+        {
+            var levelToLoad = _viewModel.PlayerPassedLevel.Value + 1;
+            ServiceLocator.Default.Resolve<GameViewModel>().InitLevelCommand.Execute(levelToLoad);
+            SceneManager.LoadScene(gameSceneName);
         }
         
         private void SetupSettingsVisibility(bool isHidden)

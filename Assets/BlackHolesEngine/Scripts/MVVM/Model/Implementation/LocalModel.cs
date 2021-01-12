@@ -24,6 +24,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         private ReactiveProperty<bool> _sound;
         private ReactiveProperty<bool> _vibration;
         private Guid _userId;
+        private GameData _gameData;
         private ReadOnlyDictionary<Guid, Item> _gameItems;
         private ReadOnlyDictionary<Guid, ShopItem> _shopItems;
         
@@ -39,17 +40,21 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         public ReactiveProperty<bool> Vibration => _vibration;
 
         public Guid UserId => _userId;
+        public GameData GameData => _gameData1;
+
         public ReadOnlyDictionary<Guid, Item> GameItems => _gameItems;
         public ReadOnlyDictionary<Guid, ShopItem> ShopItems => _shopItems;
 
         private GameApplicationConfig _applicationConfig;
         private IModelLoadService _modelLoadService;
+        private GameData _gameData1;
 
         public void Init(GameApplicationConfig gameApplicationConfigScriptableObject)
         {
             _applicationConfig = gameApplicationConfigScriptableObject;
             _gameItems = gameApplicationConfigScriptableObject.GetGameItems();
             _shopItems = gameApplicationConfigScriptableObject.GetShopItems();
+            _gameData = _applicationConfig.GetGameData();
             ServiceLocator.Default.Resolve<IModelLoadService>().LoadPlayerData(this, 
                 _applicationConfig.PlayerDataPath,
                 _applicationConfig.PlayerSettingsPath);

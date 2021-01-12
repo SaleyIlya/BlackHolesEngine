@@ -30,5 +30,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
             return new ReadOnlyDictionary<Guid, ShopItem>(
                 itemsLibrary.Library.ToDictionary(x => Guid.Parse(x.Key), y => y.Value.GetShopItem()));
         }
+
+        public GameData GetGameData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

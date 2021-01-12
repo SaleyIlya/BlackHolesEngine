@@ -1,5 +1,4 @@
 ﻿using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model;
-using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
 using BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService;
 using BlackHoles.BlackHolesEngine.Scripts.Services.ModelLoadService.Implementation;
@@ -47,7 +46,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.Core.Bootstrapper
                 .Register(new MenuViewModel(model))
                 .Register(new AdvViewModel(model))
                 .Register(new SettingsViewModel(model))
-                .Register(new MarketplaceViewModel(model));
+                .Register(new MarketplaceViewModel(model))
+                .Register(new GameViewModel(model));
         }
     }
 }
