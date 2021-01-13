@@ -15,6 +15,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         public ReactiveCommand<int> InitLevelCommand { get; }
         public ReactiveCommand<bool> SetPauseCommand { get; }
         public ReactiveCommand ChangePlayerAttemptCommand { get; }
+        public ReactiveCommand ResetPlayerHpCommand { get; }
 
         public Sprite HpImageSprite { get; private set; }
 
@@ -30,6 +31,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             InitLevelCommand = new ReactiveCommand<int>();
             SetPauseCommand = new ReactiveCommand<bool>();
             ChangePlayerAttemptCommand = new ReactiveCommand();
+            ResetPlayerHpCommand = new ReactiveCommand();
 
             InitLevelCommand.Subscribe(InitNewLevelGameData);
             SetPauseCommand.Subscribe(isPause =>
@@ -39,6 +41,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             ChangePlayerAttemptCommand.Subscribe(_ =>
             {
                 _playerAttempts.Value -= 1;
+            });
+            ResetPlayerHpCommand.Subscribe(_ =>
+            {
+                _playerHp.Value = Model.GameData.StartPlayerHp;
             });
         }
 
