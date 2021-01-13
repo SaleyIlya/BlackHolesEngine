@@ -63,8 +63,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
                 .FirstOrDefault(x => skinItems.Any(y => y.Key == x.ItemId))?
                 .ItemId;
             HpImageSprite = skinItems[selectedPlayerSkinId.Value].ItemIcon;
-            
-            _playerHp = new ReactiveProperty<int>(Model.GameData.StartPlayerHp);
+
+             _isPause.Value = false;
+             
+             _playerHp = new ReactiveProperty<int>(Model.GameData.StartPlayerHp);
             _playerAttempts = new ReactiveProperty<int>(Model.GameData.StartPlayerAttempts);
             
             PlayerAttempts = new ReadOnlyReactiveProperty<int>(_playerAttempts);
