@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BlackHolesEngine/Scenes/Menu.unity
     guid: 90b28d848f27e334f849b00be8016924
+  - enabled: 1
+    path: Assets/BlackHolesEngine/Scenes/Game.unity
+    guid: c73067e7379ffa24886172b858976369
   m_configObjects: {}
