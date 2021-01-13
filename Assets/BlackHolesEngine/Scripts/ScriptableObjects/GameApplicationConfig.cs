@@ -33,7 +33,11 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
 
         public GameData GetGameData()
         {
-            throw new NotImplementedException();
+            return new GameData
+            {
+                StartPlayerHp = 10,
+                StartPlayerAttempts = 1
+            };
         }
     }
 }

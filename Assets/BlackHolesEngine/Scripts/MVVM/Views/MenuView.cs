@@ -49,7 +49,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
             shopButton.onClick.AddListener(() => ShowWindow(shopViewPref));
             inventoryButton.onClick.AddListener(() => ShowWindow(inventoryViewPref));
             watchAdvButton.onClick.AddListener(() => ShowWindow(watchAdvViewPref));
-            startButton.onClick.AddListener(StartGame);
+            startButton.onClick.AddListener(LoadGameScene);
 
             _viewModel.PlayerInGameValue
                 .Subscribe(x => UpdateText(goldValueText, x.ToString()))
@@ -82,11 +82,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         private void ShowWindow(GameObject pref)
         {
             Instantiate(pref);
-        }
-
-        private void StartGame()
-        {
-            //Todo setup game start here
         }
 
         private void UpdateText(TextMeshProUGUI tmpText, string text)

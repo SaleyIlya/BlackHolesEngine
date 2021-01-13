@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6527051504692173728}
   - component: {fileID: 40738991608026256}
   m_Layer: 5
-  m_Name: WatchButton
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,8 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e81091979684eae8fe7414ac0c45fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuButton: {fileID: 0}
-  unpauseButton: {fileID: 0}
+  menuButton: {fileID: 40738991608026256}
+  unpauseButton: {fileID: 1742924594661952942}
   gamePauseViewGameObject: {fileID: 6633844679623780745}
   menuScene: Menu
 --- !u!1 &6910586775663500271
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 4983889886816783899}
   - component: {fileID: 3427648552970093496}
   m_Layer: 5
-  m_Name: DescriptionText
+  m_Name: LabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,6 +787,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 695470061051955768}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1742924594661952942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1267432319622694806, guid: a0d2f007332b2f5429f7c10a3b9e4fdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 695470061051955768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1297231209156118331
 PrefabInstance:
   m_ObjectHideFlags: 0

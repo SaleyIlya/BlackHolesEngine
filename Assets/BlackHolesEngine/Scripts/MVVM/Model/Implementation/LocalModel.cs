@@ -40,14 +40,13 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         public ReactiveProperty<bool> Vibration => _vibration;
 
         public Guid UserId => _userId;
-        public GameData GameData => _gameData1;
+        public GameData GameData => _gameData;
 
         public ReadOnlyDictionary<Guid, Item> GameItems => _gameItems;
         public ReadOnlyDictionary<Guid, ShopItem> ShopItems => _shopItems;
 
         private GameApplicationConfig _applicationConfig;
         private IModelLoadService _modelLoadService;
-        private GameData _gameData1;
 
         public void Init(GameApplicationConfig gameApplicationConfigScriptableObject)
         {
