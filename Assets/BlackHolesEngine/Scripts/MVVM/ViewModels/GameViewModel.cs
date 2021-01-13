@@ -16,6 +16,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         public ReactiveCommand<bool> SetPauseCommand { get; }
         public ReactiveCommand ChangePlayerAttemptCommand { get; }
         public ReactiveCommand ResetPlayerHpCommand { get; }
+        public ReactiveCommand<int> PlayerGetDamageCommand { get; }
 
         public Sprite HpImageSprite { get; private set; }
 
@@ -29,6 +30,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             IsPause = new ReadOnlyReactiveProperty<bool>(_isPause);
 
             InitLevelCommand = new ReactiveCommand<int>();
+            PlayerGetDamageCommand = new ReactiveCommand<int>();
             SetPauseCommand = new ReactiveCommand<bool>();
             ChangePlayerAttemptCommand = new ReactiveCommand();
             ResetPlayerHpCommand = new ReactiveCommand();
@@ -45,6 +47,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             ResetPlayerHpCommand.Subscribe(_ =>
             {
                 _playerHp.Value = Model.GameData.StartPlayerHp;
+            });
+            PlayerGetDamageCommand.Subscribe(_ =>
+            {
+                _playerHp.Value -= 1;
             });
         }
 
