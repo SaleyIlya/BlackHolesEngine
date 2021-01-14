@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using BlackHoles.BlackHolesEngine.Scripts.DataModel;
 using BlackHoles.BlackHolesEngine.Scripts.DataModel.Enums;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.Model;
 using UniRx;
@@ -12,13 +13,15 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         public ReadOnlyReactiveProperty<int> PlayerHp { get; private set; }
         public ReadOnlyReactiveProperty<int> PlayerAttempts { get; private set; }
 
+        public ReactiveCommand<int> PlayerGetDamageCommand { get; }
         public ReactiveCommand<int> InitLevelCommand { get; }
         public ReactiveCommand<bool> SetPauseCommand { get; }
         public ReactiveCommand ChangePlayerAttemptCommand { get; }
         public ReactiveCommand ResetPlayerHpCommand { get; }
-        public ReactiveCommand<int> PlayerGetDamageCommand { get; }
+        public ReactiveCommand GetLevelPriceCommand { get; }
 
         public Sprite HpImageSprite { get; private set; }
+        public LevelSettings LevelSettings { get; private set; }
 
         private ReactiveProperty<bool> _isPause;
         private ReactiveProperty<int> _playerHp;
@@ -34,6 +37,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             SetPauseCommand = new ReactiveCommand<bool>();
             ChangePlayerAttemptCommand = new ReactiveCommand();
             ResetPlayerHpCommand = new ReactiveCommand();
+            GetLevelPriceCommand = new ReactiveCommand();
 
             InitLevelCommand.Subscribe(InitNewLevelGameData);
             SetPauseCommand.Subscribe(isPause =>
@@ -52,6 +56,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             {
                 _playerHp.Value -= 1;
             });
+            GetLevelPriceCommand.Subscribe(_ =>
+            {
+                Model.PlayerInGameValue.Value += LevelSettings.LevelInGameValuePrice;
+            });
         }
 
         private void InitNewLevelGameData(int levelToInit)
@@ -63,6 +71,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
                 .FirstOrDefault(x => skinItems.Any(y => y.Key == x.ItemId))?
                 .ItemId;
             HpImageSprite = skinItems[selectedPlayerSkinId.Value].ItemIcon;
+
+            LevelSettings = Model.GetLevelSettings(Model.PlayerPassedLevel.Value + 1);
 
              _isPause.Value = false;
              
