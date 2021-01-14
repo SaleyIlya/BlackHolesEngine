@@ -67,6 +67,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
         private void SetupView(Item item)
         {
             itemImage.sprite = item.ItemIcon;
+            itemImage.preserveAspect = true;
         }
         
         private void SetupView(Item item, ShopItem shopItem)

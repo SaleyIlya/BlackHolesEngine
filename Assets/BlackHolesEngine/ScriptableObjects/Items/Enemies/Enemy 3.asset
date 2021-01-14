@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9856ed480184b269128222ba8c933ae, type: 3}
-  m_Name: Item 3
+  m_Name: Enemy 3
   m_EditorClassIdentifier: 
-  itemId: c73c49fe-fc58-4eb0-8518-76e711ba820e
-  inGameValueCoast: 300
+  itemId: 
+  inGameValueCoast: 0
   donateValueCoast: 0
   energyValueCoast: 0
   itemName: 
   description: 
-  itemType: 1
+  itemType: 0
   startPropertyValue: 0
   propertyGrowValue: 0
   itemMaxLevel: 0
   effects: 
-  itemIcon: {fileID: 21300000, guid: c1e70cf9daa9d9548827f284df45bddf, type: 3}
+  itemIcon: {fileID: 0}

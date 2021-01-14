@@ -4,5 +4,10 @@
     {
         public TKey Key;
         public TValue Value;
+
+        public void SetKey(TKey newKey)
+        {
+            Key = newKey;
+        }
     }
 }

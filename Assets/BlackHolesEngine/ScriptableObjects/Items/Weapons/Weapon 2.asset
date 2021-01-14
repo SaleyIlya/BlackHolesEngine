@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9856ed480184b269128222ba8c933ae, type: 3}
-  m_Name: Item
+  m_Name: Weapon 2
   m_EditorClassIdentifier: 
-  itemId: 685789ef-ffaf-4c6f-8fb7-f259649f896a
-  inGameValueCoast: 12
+  itemId: 
+  inGameValueCoast: 0
   donateValueCoast: 0
   energyValueCoast: 0
   itemName: 
@@ -23,4 +23,4 @@ MonoBehaviour:
   propertyGrowValue: 0
   itemMaxLevel: 0
   effects: 
-  itemIcon: {fileID: 21300000, guid: a9ae36676dbe6264a83f5c7566d064f0, type: 3}
+  itemIcon: {fileID: 0}

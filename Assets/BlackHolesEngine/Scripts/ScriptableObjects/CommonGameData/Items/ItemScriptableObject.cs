@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BlackHoles.BlackHolesEngine.Scripts.DataModel;
 using BlackHoles.BlackHolesEngine.Scripts.DataModel.Enums;
+using UnityEditor;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.Items
@@ -53,6 +54,13 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.I
                 PropertyGrowValue = propertyGrowValue,
                 ItemIcon = itemIcon
             };
+        }
+
+        [ContextMenu("Generate Item Id")]
+        public void GenerateItemId()
+        {
+            var id = Guid.NewGuid();
+            itemId = id.ToString();
         }
     }
 }

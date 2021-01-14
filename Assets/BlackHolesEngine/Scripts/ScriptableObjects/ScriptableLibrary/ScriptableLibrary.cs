@@ -7,7 +7,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.ScriptableLibrar
     public abstract class ScriptableLibrary<TPair, TKey, TValue> : ScriptableObject 
         where TPair : SKeyValuePair<TKey, TValue>
     {
-        [SerializeField] private List<TPair> library;
+        [SerializeField] protected List<TPair> library;
 
         private Dictionary<TKey, TValue> _libraryDictionary;
         public Dictionary<TKey, TValue> Library 
