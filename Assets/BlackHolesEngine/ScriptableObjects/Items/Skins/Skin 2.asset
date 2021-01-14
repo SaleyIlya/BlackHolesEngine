@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9856ed480184b269128222ba8c933ae, type: 3}
   m_Name: Skin 2
   m_EditorClassIdentifier: 
-  itemId: 
-  inGameValueCoast: 0
+  itemId: bbcc9c48-f532-46c6-a92a-fa0fe429bd8b
+  inGameValueCoast: 600
   donateValueCoast: 0
   energyValueCoast: 0
   itemName: 
@@ -23,4 +23,4 @@ MonoBehaviour:
   propertyGrowValue: 0
   itemMaxLevel: 0
   effects: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 1c122143b33dfb643a7ffdceb6105b2e, type: 3}

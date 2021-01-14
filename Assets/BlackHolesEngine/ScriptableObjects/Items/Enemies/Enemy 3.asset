@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9856ed480184b269128222ba8c933ae, type: 3}
   m_Name: Enemy 3
   m_EditorClassIdentifier: 
-  itemId: 
-  inGameValueCoast: 0
+  itemId: 5818272b-34bd-4d26-9349-d7b6d1532d88
+  inGameValueCoast: 400
   donateValueCoast: 0
   energyValueCoast: 0
   itemName: 
   description: 
-  itemType: 0
+  itemType: 2
   startPropertyValue: 0
   propertyGrowValue: 0
   itemMaxLevel: 0
   effects: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: a9ae36676dbe6264a83f5c7566d064f0, type: 3}

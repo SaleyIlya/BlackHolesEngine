@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9856ed480184b269128222ba8c933ae, type: 3}
   m_Name: Weapon 3
   m_EditorClassIdentifier: 
-  itemId: 
-  inGameValueCoast: 0
+  itemId: dec755db-72dc-4d23-8085-22afcaab9502
+  inGameValueCoast: 500
   donateValueCoast: 0
   energyValueCoast: 0
   itemName: 
   description: 
-  itemType: 0
+  itemType: 1
   startPropertyValue: 0
   propertyGrowValue: 0
   itemMaxLevel: 0
   effects: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 9d88b53b63ffe14449d600bc48ad0d03, type: 3}

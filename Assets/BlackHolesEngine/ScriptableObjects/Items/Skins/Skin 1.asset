@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9856ed480184b269128222ba8c933ae, type: 3}
   m_Name: Skin 1
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: 97965805-eb06-4a67-b5cb-16360bac0ef6
   inGameValueCoast: 0
   donateValueCoast: 0
   energyValueCoast: 0
@@ -23,4 +23,4 @@ MonoBehaviour:
   propertyGrowValue: 0
   itemMaxLevel: 0
   effects: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 261c4514a504a5e42b736154c1fc2db7, type: 3}

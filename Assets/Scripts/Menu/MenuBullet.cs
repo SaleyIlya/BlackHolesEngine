@@ -10,6 +10,7 @@ namespace BlackHoles.Menu
 
         public void Init(Sprite sprite)
         {
+            transform.localPosition = Vector3.zero;
             spriteRenderer.sprite = sprite;
         }
 
@@ -18,7 +19,7 @@ namespace BlackHoles.Menu
             transform.position += Vector3.up * (speed * Time.deltaTime);
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             Destroy(gameObject);
         }

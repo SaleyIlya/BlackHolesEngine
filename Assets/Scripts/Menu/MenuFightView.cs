@@ -36,22 +36,24 @@ namespace BlackHoles.Menu
             _viewModel = ServiceLocator.Default.Resolve<MarketplaceViewModel>();
 
             _skinItems = _viewModel.GameItems
-                .Where(x => x.Value.ItemType == ItemType.Skins)
+                .Where(x => x.Value.ItemType == ItemType.Skin)
                 .ToDictionary(x => x.Key, y => y.Value);
             _weaponItems = _viewModel.GameItems
-                .Where(x => x.Value.ItemType == ItemType.Skins)
+                .Where(x => x.Value.ItemType == ItemType.Weapon)
                 .ToDictionary(x => x.Key, y => y.Value);
             _enemyItems = _viewModel.GameItems
-                .Where(x => x.Value.ItemType == ItemType.Skins)
+                .Where(x => x.Value.ItemType == ItemType.Enemy)
                 .ToDictionary(x => x.Key, y => y.Value);
             _bossItems = _viewModel.GameItems
-                .Where(x => x.Value.ItemType == ItemType.Skins)
+                .Where(x => x.Value.ItemType == ItemType.Boss)
                 .ToDictionary(x => x.Key, y => y.Value);
             
             _viewModel.PlayerSelectedItems
                 .ObserveAdd()
                 .Subscribe(_ => SetupSprites())
                 .AddTo(this);
+
+            SetupSprites();
             
             Observable.Timer(TimeSpan.FromSeconds(shootDelay))
                 .Repeat()
@@ -69,11 +71,11 @@ namespace BlackHoles.Menu
             var selectedSkin = _viewModel.PlayerSelectedItems
                 .FirstOrDefault(x => _skinItems.ContainsKey(x.ItemId));
             var selectedWeapon = _viewModel.PlayerSelectedItems
-                .FirstOrDefault(x => _skinItems.ContainsKey(x.ItemId));
+                .FirstOrDefault(x => _weaponItems.ContainsKey(x.ItemId));
             var selectedEnemy = _viewModel.PlayerSelectedItems
-                .FirstOrDefault(x => _skinItems.ContainsKey(x.ItemId));
+                .FirstOrDefault(x => _enemyItems.ContainsKey(x.ItemId));
             var selectedBoss = _viewModel.PlayerSelectedItems
-                .FirstOrDefault(x => _skinItems.ContainsKey(x.ItemId));
+                .FirstOrDefault(x => _bossItems.ContainsKey(x.ItemId));
 
             playerSprite.sprite = _skinItems[selectedSkin.ItemId].ItemIcon;
             enemySprite.sprite = _enemyItems[selectedEnemy.ItemId].ItemIcon;

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9856ed480184b269128222ba8c933ae, type: 3}
   m_Name: Boss 2
   m_EditorClassIdentifier: 
-  itemId: 
-  inGameValueCoast: 0
+  itemId: 2de9bb1a-019c-40fc-8120-3cc159389a45
+  inGameValueCoast: 500
   donateValueCoast: 0
   energyValueCoast: 0
   itemName: 
   description: 
-  itemType: 0
+  itemType: 3
   startPropertyValue: 0
   propertyGrowValue: 0
   itemMaxLevel: 0
   effects: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: cb93b76425b0bc748af60b80d20c9a86, type: 3}

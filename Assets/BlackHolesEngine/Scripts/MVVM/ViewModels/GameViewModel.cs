@@ -66,7 +66,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         private void InitNewLevelGameData(int levelToInit)
         {
             var skinItems = Model.GameItems
-                .Where(x => x.Value.ItemType == ItemType.Skins)
+                .Where(x => x.Value.ItemType == ItemType.Skin)
                 .ToDictionary(x => x.Key, y => y.Value);
             var selectedPlayerSkinId = Model.SelectedPlayerItems
                 .FirstOrDefault(x => skinItems.Any(y => y.Key == x.ItemId))?

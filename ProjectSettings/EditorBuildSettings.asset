@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/BlackHolesEngine/Scenes/InitScene.unity
+    path: Assets/Scenes/InitScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/BlackHolesEngine/Scenes/Menu.unity
+    path: Assets/Scenes/Menu.unity
     guid: 90b28d848f27e334f849b00be8016924
   - enabled: 1
-    path: Assets/BlackHolesEngine/Scenes/Game.unity
+    path: Assets/Scenes/Game.unity
     guid: c73067e7379ffa24886172b858976369
   m_configObjects: {}

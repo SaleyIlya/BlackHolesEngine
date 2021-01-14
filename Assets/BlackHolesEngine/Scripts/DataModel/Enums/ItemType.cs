@@ -5,9 +5,9 @@
     /// </summary>
     public enum ItemType
     {
-        Skins,
-        Weapons,
-        Enemies,
-        Bosses
+        Skin,
+        Weapon,
+        Enemy,
+        Boss
     }
 }
