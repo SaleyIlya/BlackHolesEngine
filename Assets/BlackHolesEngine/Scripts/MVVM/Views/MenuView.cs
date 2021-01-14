@@ -56,7 +56,18 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views
                 .AddTo(this);
             
             _viewModel.PlayerPassedLevel
-                .Subscribe(x => UpdateText(levelText, GetPlayerLevelText(x)))
+                .Subscribe(x =>
+                {
+                    if (x <= _viewModel.FinalLevelNumber)
+                    {
+                        UpdateText(levelText, GetPlayerLevelText(x));
+                    }
+                    else
+                    {
+                        startButton.interactable = false;
+                        UpdateText(levelText, "coming soon..");
+                    }
+                })
                 .AddTo(this);
         }
 

@@ -28,7 +28,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views.GameViews
 
         private void MenuButtonAction()
         {
-            _viewModel.GetLevelPriceCommand.Execute();
+            _viewModel.FinishLevelCommand.Execute();
             SceneManager.LoadScene(menuScene);
         }
     }

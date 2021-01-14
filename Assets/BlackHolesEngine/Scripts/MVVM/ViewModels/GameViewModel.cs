@@ -18,7 +18,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         public ReactiveCommand<bool> SetPauseCommand { get; }
         public ReactiveCommand ChangePlayerAttemptCommand { get; }
         public ReactiveCommand ResetPlayerHpCommand { get; }
-        public ReactiveCommand GetLevelPriceCommand { get; }
+        public ReactiveCommand FinishLevelCommand { get; }
 
         public Sprite HpImageSprite { get; private set; }
         public LevelSettings LevelSettings { get; private set; }
@@ -37,7 +37,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             SetPauseCommand = new ReactiveCommand<bool>();
             ChangePlayerAttemptCommand = new ReactiveCommand();
             ResetPlayerHpCommand = new ReactiveCommand();
-            GetLevelPriceCommand = new ReactiveCommand();
+            FinishLevelCommand = new ReactiveCommand();
 
             InitLevelCommand.Subscribe(InitNewLevelGameData);
             SetPauseCommand.Subscribe(isPause =>
@@ -56,9 +56,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             {
                 _playerHp.Value -= 1;
             });
-            GetLevelPriceCommand.Subscribe(_ =>
+            FinishLevelCommand.Subscribe(_ =>
             {
                 Model.PlayerInGameValue.Value += LevelSettings.LevelInGameValuePrice;
+                Model.PlayerPassedLevel.Value++;
             });
         }
 
@@ -72,7 +73,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
                 .ItemId;
             HpImageSprite = skinItems[selectedPlayerSkinId.Value].ItemIcon;
 
-            LevelSettings = Model.GetLevelSettings(Model.PlayerPassedLevel.Value + 1);
+            LevelSettings = Model.GetLevelSettings(levelToInit);
 
              _isPause.Value = false;
              

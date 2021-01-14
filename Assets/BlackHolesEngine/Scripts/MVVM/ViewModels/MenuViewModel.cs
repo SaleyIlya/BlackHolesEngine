@@ -8,6 +8,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         public ReadOnlyReactiveProperty<int> PlayerInGameValue { get; }
         public ReadOnlyReactiveProperty<int> PlayerPassedLevel { get; }
 
+        public int FinalLevelNumber => Model.GameData.FinalLevelNumber;
+
         public MenuViewModel(IModel model) : base(model)
         {
             PlayerInGameValue = new ReadOnlyReactiveProperty<int>(Model.PlayerInGameValue);
