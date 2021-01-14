@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ca4f451d2c6846e4e8b3e8b803995326
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SB Sans Interface
+  fontNames:
+  - SB Sans Interface
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 994f406a1f6071543a9211aa18b33796, type: 3}
+  - {fileID: 12800000, guid: 37b627aa7b5130d4b8637046d772170e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

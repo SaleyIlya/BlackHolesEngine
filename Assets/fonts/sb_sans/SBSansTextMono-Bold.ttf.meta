@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 0e65af3a92f11b944964653e27eaceb4
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SB Sans Text Mono
+  fontNames:
+  - SB Sans Text Mono
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5c1e4110321ac6442b5a2128d43706d0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

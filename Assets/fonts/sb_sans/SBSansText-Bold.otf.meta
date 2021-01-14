@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 88978562ca15edf40b056c15a3a81d07
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SB Sans Text
+  fontNames:
+  - SB Sans Text
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 78071715e1d57d049ac03c18ed05e5ff, type: 3}
+  - {fileID: 12800000, guid: 3459b855b7bebf64aab5c9705a4a45f3, type: 3}
+  - {fileID: 12800000, guid: 0043a09af81f96e418998f7dd1996200, type: 3}
+  - {fileID: 12800000, guid: d4e4b2fb746194741bf6b99faf6c70cc, type: 3}
+  - {fileID: 12800000, guid: 1033708c7f46ec04d8fe8011579d3325, type: 3}
+  - {fileID: 12800000, guid: 14abee8e4ebab7243b5bbab6d7102e5c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
