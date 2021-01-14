@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using BlackHoles.BlackHolesEngine.Scripts.DataModel;
+using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData;
 using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.Items;
+using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.Levels;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
@@ -14,7 +16,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
     {
         [SerializeField] private string playerDataPath;
         [SerializeField] private string playerSettingsPath;
+        [Header("ScriptableObjects")]
+        [SerializeField] private GameDataScriptableObject gameData;
         [SerializeField] private ItemLibraryScriptableObject itemsLibrary;
+        [SerializeField] private LevelsLibraryScriptableObject levelsLibrary;
 
         public string PlayerDataPath => Path.Combine(Application.persistentDataPath, playerDataPath);
         public string PlayerSettingsPath => Path.Combine(Application.persistentDataPath, playerSettingsPath);
@@ -33,11 +38,13 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
 
         public GameData GetGameData()
         {
-            return new GameData
-            {
-                StartPlayerHp = 10,
-                StartPlayerAttempts = 1
-            };
+            return gameData.GetGameData();
+        }
+
+        public ReadOnlyDictionary<int, LevelSettings> GetLevelsSettings()
+        {
+            return new ReadOnlyDictionary<int, LevelSettings>(
+                levelsLibrary.Library.ToDictionary(x => x.Key, y => y.Value.GetLevelSettings()));
         }
     }
 }

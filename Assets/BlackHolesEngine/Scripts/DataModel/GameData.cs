@@ -18,5 +18,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
         /// </summary>
         [JsonProperty("startPlayerHp"), ShowInInspector]
         public int StartPlayerAttempts { get; set; }
+        /// <summary>
+        /// Общее число уровней в игре
+        /// </summary>
+        [JsonProperty("finalLevelNumber"), ShowInInspector]
+        public int FinalLevelNumber { get; set; }
     }
 }
