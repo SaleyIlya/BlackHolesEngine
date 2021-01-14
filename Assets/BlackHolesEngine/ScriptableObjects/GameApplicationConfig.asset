@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDataPath: PlayerData.txt
   playerSettingsPath: PlayerSettings.txt
+  gameData: {fileID: 11400000, guid: 15b050c37db204e4b8bdf152a05f9666, type: 2}
   itemsLibrary: {fileID: 11400000, guid: 48d4033bb0c632646937a8e98f065dc4, type: 2}
+  levelsLibrary: {fileID: 11400000, guid: 8f30ed273feb37443ab3767d95b885bb, type: 2}
