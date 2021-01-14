@@ -92,8 +92,8 @@ MonoBehaviour:
   buttonLabel: {fileID: 7193209178753877131}
   button: {fileID: 1912021182214502036}
   image: {fileID: 7382537981740406620}
-  selectedSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  deselectedSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  selectedSprite: {fileID: 21300000, guid: e6adb6876bb34404dbede453668d0e47, type: 3}
+  deselectedSprite: {fileID: 21300000, guid: d51e8a14ea43be340867af254d7014af, type: 3}
 --- !u!114 &1912021182214502036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,8 +210,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

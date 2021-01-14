@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5143845706170844074}
   - component: {fileID: 8842080981018049007}
   m_Layer: 5
-  m_Name: SettingsVibration
+  m_Name: SettingsSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,11 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fa62b7c21492e93882dad2e253ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 1
+  buttonType: 0
   button: {fileID: 5143845706170844074}
   buttonImage: {fileID: 4070811312788814342}
-  activeSprite: {fileID: 21300000, guid: 6d438c0bb0748bd42bb24e1cd84be7a1, type: 3}
-  inactiveSprite: {fileID: 21300000, guid: 0bd8ec20ac97acb4c9b438303201c7f7, type: 3}
+  activeSprite: {fileID: 21300000, guid: d3027c89379a1db448d1bc1333aac221, type: 3}
+  inactiveSprite: {fileID: 21300000, guid: dff86f4f08bdddb409e6bd0c3c027925, type: 3}
 --- !u!1 &9110043056513094833
 GameObject:
   m_ObjectHideFlags: 0
