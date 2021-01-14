@@ -27,7 +27,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         private GameData _gameData;
         private ReadOnlyDictionary<Guid, Item> _gameItems;
         private ReadOnlyDictionary<Guid, ShopItem> _shopItems;
-        
+
         public ReactiveProperty<int> PlayerPassedLevel => _playerPassedLevel;
         public ReactiveProperty<int> PlayerDonateValue => _playerDonateValue;
         public ReactiveProperty<float> CurrentPlayerLevel => _currentPlayerLevel;
@@ -48,15 +48,23 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         private GameApplicationConfig _applicationConfig;
         private IModelLoadService _modelLoadService;
 
+        private ReadOnlyDictionary<int, LevelSettings> _levelsSettings;
+
         public void Init(GameApplicationConfig gameApplicationConfigScriptableObject)
         {
             _applicationConfig = gameApplicationConfigScriptableObject;
             _gameItems = gameApplicationConfigScriptableObject.GetGameItems();
             _shopItems = gameApplicationConfigScriptableObject.GetShopItems();
             _gameData = _applicationConfig.GetGameData();
+            _levelsSettings = _applicationConfig.GetLevelsSettings();
             ServiceLocator.Default.Resolve<IModelLoadService>().LoadPlayerData(this, 
                 _applicationConfig.PlayerDataPath,
                 _applicationConfig.PlayerSettingsPath);
+        }
+        
+        public LevelSettings GetLevelSettings(int level)
+        {
+            return !_levelsSettings.ContainsKey(level) ? null : _levelsSettings[level];
         }
 
         public string GetPlayerData()

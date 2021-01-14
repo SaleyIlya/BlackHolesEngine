@@ -14,6 +14,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model
         string GetPlayerSettings();
         void InitPlayerData(string playerData, string playerSettings);
         void InitPlayerData();
+        LevelSettings GetLevelSettings(int level);
         
         ReactiveProperty<int> PlayerPassedLevel { get; }
         ReactiveProperty<int> PlayerDonateValue { get; }

@@ -1,5 +1,4 @@
-﻿using System;
-using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.ScriptableLibrary;
+﻿using BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.ScriptableLibrary;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.Items
