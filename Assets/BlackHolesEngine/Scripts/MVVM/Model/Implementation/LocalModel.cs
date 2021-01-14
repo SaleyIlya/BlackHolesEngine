@@ -137,6 +137,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
         public void InitPlayerData()
         {
             var newUserGuid = Guid.NewGuid();
+            var startItems = _applicationConfig.GetStartItems();
             var data = new PlayerData
             {
                 Player = new Player
@@ -148,8 +149,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
                     },
                     Inventory = new Inventory
                     {
-                        PlayerItems = new List<InventoryItem>(),
-                        SelectedItems = new List<InventoryItem>()
+                        PlayerItems = startItems,
+                        SelectedItems = startItems
                     },
                     Money = new Money
                     {
@@ -161,7 +162,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Model.Implementation
                 },
                 User = new User
                 {
-                    Nickname = "SOBAKA_SUTULAYA",
+                    Nickname = "default_user",
                     UserId = newUserGuid
                 }
             };

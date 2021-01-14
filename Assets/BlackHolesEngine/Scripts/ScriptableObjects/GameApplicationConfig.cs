@@ -20,6 +20,8 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
         [SerializeField] private GameDataScriptableObject gameData;
         [SerializeField] private ItemLibraryScriptableObject itemsLibrary;
         [SerializeField] private LevelsLibraryScriptableObject levelsLibrary;
+        [SerializeField] private List<ItemScriptableObject> _startItems;
+        
 
         public string PlayerDataPath => Path.Combine(Application.persistentDataPath, playerDataPath);
         public string PlayerSettingsPath => Path.Combine(Application.persistentDataPath, playerSettingsPath);
@@ -45,6 +47,22 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects
         {
             return new ReadOnlyDictionary<int, LevelSettings>(
                 levelsLibrary.Library.ToDictionary(x => x.Key, y => y.Value.GetLevelSettings()));
+        }
+
+        public List<InventoryItem> GetStartItems()
+        {
+            var result = new List<InventoryItem>();
+            foreach (var startItem in _startItems)
+            {
+                result.Add(new InventoryItem
+                {
+                    Count = 1,
+                    ItemId = startItem.GetItem().ItemId,
+                    ItemLevel = 0
+                });
+            }
+
+            return result;
         }
     }
 }

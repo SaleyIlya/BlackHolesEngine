@@ -17,3 +17,8 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: 15b050c37db204e4b8bdf152a05f9666, type: 2}
   itemsLibrary: {fileID: 11400000, guid: 48d4033bb0c632646937a8e98f065dc4, type: 2}
   levelsLibrary: {fileID: 11400000, guid: 8f30ed273feb37443ab3767d95b885bb, type: 2}
+  _startItems:
+  - {fileID: 11400000, guid: 903f3e880be1ed8468744260703aacd0, type: 2}
+  - {fileID: 11400000, guid: 830e8cc5f1f21c14b96d0b02e4db2519, type: 2}
+  - {fileID: 11400000, guid: cddbe1ce59ad3eb4fa06caa92d9df680, type: 2}
+  - {fileID: 11400000, guid: ab5c42828609fec44bea07f9ac35ae12, type: 2}
