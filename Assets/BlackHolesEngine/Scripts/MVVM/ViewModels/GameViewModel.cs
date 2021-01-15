@@ -20,8 +20,12 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         public ReactiveCommand ResetPlayerHpCommand { get; }
         public ReactiveCommand FinishLevelCommand { get; }
 
-        public Sprite HpImageSprite { get; private set; }
         public LevelSettings LevelSettings { get; private set; }
+        
+        public Sprite PlayerSprite { get; private set; }
+        public Sprite PlayerBulletSprite { get; private set; }
+        public Sprite EnemySprite { get; private set; }
+        public Sprite BossSprite { get; private set; }
 
         private ReactiveProperty<bool> _isPause;
         private ReactiveProperty<int> _playerHp;
@@ -71,7 +75,29 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             var selectedPlayerSkinId = Model.SelectedPlayerItems
                 .FirstOrDefault(x => skinItems.Any(y => y.Key == x.ItemId))?
                 .ItemId;
-            HpImageSprite = skinItems[selectedPlayerSkinId.Value].ItemIcon;
+            var weaponItems = Model.GameItems
+                .Where(x => x.Value.ItemType == ItemType.Weapon)
+                .ToDictionary(x => x.Key, y => y.Value);
+            var selectedWeaponSkinId = Model.SelectedPlayerItems
+                .FirstOrDefault(x => weaponItems.Any(y => y.Key == x.ItemId))?
+                .ItemId;
+            var enemiesItems = Model.GameItems
+                .Where(x => x.Value.ItemType == ItemType.Enemy)
+                .ToDictionary(x => x.Key, y => y.Value);
+            var selectedEnemySkinId = Model.SelectedPlayerItems
+                .FirstOrDefault(x => enemiesItems.Any(y => y.Key == x.ItemId))?
+                .ItemId;
+            var bossesItems = Model.GameItems
+                .Where(x => x.Value.ItemType == ItemType.Boss)
+                .ToDictionary(x => x.Key, y => y.Value);
+            var selectedBossSkinId = Model.SelectedPlayerItems
+                .FirstOrDefault(x => bossesItems.Any(y => y.Key == x.ItemId))?
+                .ItemId;
+            
+            PlayerSprite = skinItems[selectedPlayerSkinId.Value].ItemIcon;
+            PlayerBulletSprite = weaponItems[selectedWeaponSkinId.Value].ItemIcon;
+            EnemySprite = enemiesItems[selectedEnemySkinId.Value].ItemIcon;
+            BossSprite = bossesItems[selectedBossSkinId.Value].ItemIcon;
 
             LevelSettings = Model.GetLevelSettings(levelToInit);
 

@@ -34,6 +34,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
                 .Add(new InitializeSystem())
                 .Add(new PlayerControlSystem())
                 .Add(new MoveSystem())
+                .Add(new ShootSystem())
                 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()

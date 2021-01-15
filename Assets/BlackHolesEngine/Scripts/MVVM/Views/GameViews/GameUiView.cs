@@ -24,7 +24,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.Views.GameViews
             
             pauseButton.onClick.AddListener(PauseButtonAction);
 
-            hpImage.sprite = _viewModel.HpImageSprite;
+            hpImage.sprite = _viewModel.PlayerSprite;
 
             _viewModel.PlayerHp.Subscribe(hp =>
                 {

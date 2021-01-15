@@ -1,13 +1,16 @@
-﻿using UnityEngine;
+﻿using BlackHoles.Game;
+using UnityEngine;
 
 namespace BlackHoles.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "GamePrefabs", menuName = "Game/GamePrefabsScriptableObject", order = 0)]
     public class GamePrefabsScriptableObject : ScriptableObject
     {
-        [SerializeField] private GameObject playerPrefab;
+        [SerializeField] private PlayerGameObject playerPrefab;
+        [SerializeField] private BulletGameObject playerBulletPrefab;
 
-        public GameObject PlayerPrefab => playerPrefab;
+        public PlayerGameObject PlayerPrefab => playerPrefab;
+        public BulletGameObject PlayerBulletPrefab => playerBulletPrefab;
 
     }
 }
