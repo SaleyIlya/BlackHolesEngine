@@ -1,15 +1,25 @@
+using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
+using BlackHoles.BlackHolesEngine.Scripts.ECS.Systems;
+using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
+using BlackHoles.ScriptableObjects;
 using Leopotam.Ecs;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ECS 
 {
-    sealed class GameEcsStartup : MonoBehaviour 
+    sealed class GameEcsStartup : MonoBehaviour
     {
+        public GamePrefabsScriptableObject GamePrefabsScriptableObject;
+        public GameViewModel GameViewModel;
+        public Camera Camera;
+        
         EcsWorld _world;
         EcsSystems _systems;
 
         void Start () {
             // void can be switched to IEnumerator for support coroutines.
+            Camera = Camera.main;
+            GameViewModel = ServiceLocator.Default.Resolve<GameViewModel>();
             
             _world = new EcsWorld ();
             _systems = new EcsSystems (_world);
@@ -21,6 +31,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
                 // register your systems here, for example:
                 // .Add (new TestSystem1 ())
                 // .Add (new TestSystem2 ())
+                .Add(new InitializeSystem())
+                .Add(new PlayerControlSystem())
+                .Add(new MoveSystem())
                 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
@@ -29,6 +42,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
                 // inject service instances here (order doesn't important), for example:
                 // .Inject (new CameraService ())
                 // .Inject (new NavMeshSupport ())
+                .Inject(GamePrefabsScriptableObject)
+                .Inject(GameViewModel)
+                .Inject(Camera)
                 .Init ();
         }
 
