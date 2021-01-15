@@ -60,13 +60,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.07058824, g: 0.454902, b: 0.54901963, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e6adb6876bb34404dbede453668d0e47, type: 3}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.13
+  m_PixelsPerUnitMultiplier: 0.5
 --- !u!114 &6425078055924618062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,8 +342,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e6adb6876bb34404dbede453668d0e47, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 8c352dff9138273488ec5b61ce765454, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -530,14 +530,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10196079, g: 0.10196079, b: 0.10196079, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 8c352dff9138273488ec5b61ce765454, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -828,7 +828,7 @@ MonoBehaviour:
   priceDonateValue: 0
   priceEnergyValue: 0
   priceCloseMessage: You just earned 100 gold coins!!!
-  priceCloseButtonLabel: N1CE!
+  priceCloseButtonLabel: fine
   cancelCloseMessage: Are you sure? In case of closure, the award will not be received
-  cancelCloseOkButtonLabel: ' Continue watching'
-  cancelCloseExitButtonLabel: Close anyway
+  cancelCloseOkButtonLabel: continue watching
+  cancelCloseExitButtonLabel: close anyway
