@@ -1,5 +1,6 @@
 ﻿using BlackHoles.BlackHolesEngine.Scripts.ECS.Components;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
+using BlackHoles.Game;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -33,9 +34,12 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                     newBullet.Init(_gameViewModel.PlayerBulletSprite);
 
                     var bulletEntity = _world.NewEntity();
+
+                    bulletEntity.Get<BulletComponent>();
                     bulletEntity.Get<TransformComponent>().Transform = newBullet.transform;
-                    ref var bulletMove = ref bulletEntity.Get<MoveComponent>();
+                    bulletEntity.Get<TriggerComponent>().Trigger = newBullet.GetComponent<TriggerDetector>();
                     
+                    ref var bulletMove = ref bulletEntity.Get<MoveComponent>();
                     bulletMove.Direction = shootComponent.ShootDirection;
                     bulletMove.Speed = newBullet.Speed;
 

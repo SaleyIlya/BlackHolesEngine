@@ -1,5 +1,6 @@
 ﻿using BlackHoles.BlackHolesEngine.Scripts.ECS.Components;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
+using BlackHoles.Game;
 using BlackHoles.ScriptableObjects;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -59,6 +60,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             player.Get<PlayerComponent>();
             player.Get<MoveComponent>().Speed = playerGameObject.Speed;
             player.Get<TransformComponent>().Transform = playerGameObject.transform;
+            player.Get<TriggerComponent>().Trigger = playerGameObject.GetComponent<TriggerDetector>();
             
             ref var shootComponent = ref player.Get<ShootComponent>();
             shootComponent.BulletPrefab = _gamePrefabsScriptableObject.PlayerBulletPrefab;

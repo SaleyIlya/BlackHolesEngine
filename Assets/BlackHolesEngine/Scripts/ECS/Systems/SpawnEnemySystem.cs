@@ -45,8 +45,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
 
             enemyEntity.Get<EnemyComponent>();
             enemyEntity.Get<TransformComponent>().Transform = enemyObject.transform;
-            ref var moveComponent = ref enemyEntity.Get<MoveComponent>();
+            enemyEntity.Get<TriggerComponent>().Trigger = enemyObject.GetComponent<TriggerDetector>();
             
+            ref var moveComponent = ref enemyEntity.Get<MoveComponent>();
             moveComponent.Direction = new Vector2(0, -1);
             moveComponent.Speed = enemyGameObject.Speed;
         }

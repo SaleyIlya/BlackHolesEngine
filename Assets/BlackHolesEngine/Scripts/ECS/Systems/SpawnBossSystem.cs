@@ -62,10 +62,11 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             bossEntity.Get<TransformComponent>().Transform = bossObject.transform;
             
             ref var moveComponent = ref bossEntity.Get<MoveComponent>();
-            
             Vector2 bossPosition = bossObject.transform.position;
             moveComponent.Direction = (bossComponent.CurrentPointToMove - bossPosition).normalized;
             moveComponent.Speed = bossGameObject.Speed;
+            
+            bossEntity.Get<TriggerComponent>().Trigger = bossObject.GetComponent<TriggerDetector>();
         }
     }
 }
