@@ -6,12 +6,13 @@ using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
 {
-    public class SpawnEnemySystem : IEcsRunSystem
+    public class SpawnSystem : IEcsRunSystem
     {
         private GameViewModel _gameViewModel;
 
         private EcsWorld _world;
-        private EcsFilter<EnemyComponent, SpawnComponent> _filer;
+        private EcsFilter<EnemyComponent, SpawnComponent> _enemies;
+        private EcsFilter<SpawnComponent>.Exclude<EnemyComponent> _walls;
         
         public void Run()
         {
@@ -20,16 +21,29 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                 return;
             }
 
-            foreach (var index in _filer)
+            foreach (var index in _enemies)
             {
-                ref var spawn = ref _filer.Get2(index);
+                ref var spawn = ref _enemies.Get2(index);
 
                 spawn.TimeToSpawn -= Time.deltaTime;
 
                 if (spawn.TimeToSpawn <= 0)
                 {
                     SpawnEnemy(spawn.ObjectToSpawn, spawn.SpawnPoint);
-                    _filer.GetEntity(index).Destroy();
+                    _enemies.GetEntity(index).Destroy();
+                }
+            }
+            
+            foreach (var index in _walls)
+            {
+                ref var spawn = ref _enemies.Get2(index);
+
+                spawn.TimeToSpawn -= Time.deltaTime;
+
+                if (spawn.TimeToSpawn <= 0)
+                {
+                    SpawnWall(spawn.ObjectToSpawn, spawn.SpawnPoint);
+                    _enemies.GetEntity(index).Destroy();
                 }
             }
         }
@@ -50,6 +64,14 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             ref var moveComponent = ref enemyEntity.Get<MoveComponent>();
             moveComponent.Direction = new Vector2(0, -1);
             moveComponent.Speed = enemyGameObject.Speed;
+        }
+        
+        private void SpawnWall(GameObject objToSpawn, Vector3 spawnPoint)
+        {
+            var wallObject = Object.Instantiate(objToSpawn, spawnPoint, Quaternion.identity);
+            var wallGameObject = wallObject.GetComponent<EnemyGameObject>();
+            
+            wallGameObject.Init(_gameViewModel.BossSprite);
         }
     }
 }

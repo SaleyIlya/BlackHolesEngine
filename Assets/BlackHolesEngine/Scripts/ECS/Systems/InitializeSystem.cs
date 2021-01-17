@@ -17,38 +17,35 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
         {
             PlayerInit();
             InitEnemiesSpawners();
-            InitBossSpawner();
         }
 
         private void InitEnemiesSpawners()
         {
             var levelSettings = _gameViewModel.LevelSettings;
 
-            foreach (var enemyTiming in levelSettings.EnemyTimings)
+            foreach (var enemyCoords in levelSettings.EnemyCoords)
             {
                 var newEnemySpawner = _world.NewEntity();
                 newEnemySpawner.Get<EnemyComponent>();
                 ref var spawn = ref newEnemySpawner.Get<SpawnComponent>();
-                spawn.TimeToSpawn = enemyTiming;
-                spawn.SpawnPoint = Vector2.Lerp(
-                    _gamePrefabsScriptableObject.LeftSpawnPoint,
-                    _gamePrefabsScriptableObject.RightSpawnPoint,
-                    Random.Range(0f, 1f));
+                spawn.TimeToSpawn = 1f;
+                spawn.SpawnPoint = enemyCoords + _gamePrefabsScriptableObject.Offset;
                 spawn.ObjectToSpawn = _gamePrefabsScriptableObject.EnemyPrefab.gameObject;
             }
         }
-
-        private void InitBossSpawner()
+        
+        private void InitWallsSpawners()
         {
-            var bossSpawner = _world.NewEntity();
-            bossSpawner.Get<BossComponent>();
-            ref var spawn = ref bossSpawner.Get<SpawnComponent>();
-            spawn.TimeToSpawn = _gameViewModel.LevelSettings.BossTiming;
-            spawn.SpawnPoint = Vector2.Lerp(
-                _gamePrefabsScriptableObject.LeftSpawnPoint,
-                _gamePrefabsScriptableObject.RightSpawnPoint,
-                0.5f);
-            spawn.ObjectToSpawn = _gamePrefabsScriptableObject.BossPrefab.gameObject;
+            var levelSettings = _gameViewModel.LevelSettings;
+
+            foreach (var wallCoord in levelSettings.WallsCoords)
+            {
+                var wallSpawner = _world.NewEntity();
+                ref var spawn = ref wallSpawner.Get<SpawnComponent>();
+                spawn.TimeToSpawn = 0f;
+                spawn.SpawnPoint = wallCoord + _gamePrefabsScriptableObject.Offset;
+                spawn.ObjectToSpawn = _gamePrefabsScriptableObject.WallPrefab.gameObject;
+            }
         }
 
         private void PlayerInit()

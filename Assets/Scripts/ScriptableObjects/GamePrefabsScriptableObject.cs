@@ -8,27 +8,21 @@ namespace BlackHoles.ScriptableObjects
     {
         [SerializeField] private PlayerGameObject playerPrefab;
         [SerializeField] private BulletGameObject playerBulletPrefab;
-        [SerializeField] private EnemyGameObject _enemyPrefab;
-        [SerializeField] private BossGameObject _bossPrefab;
+        [SerializeField] private EnemyGameObject enemyPrefab;
+        [SerializeField] private WallGameObject wallPrefab;
 
-        private Vector2 _leftSpawnPoint;
-        private Vector2 _rightSpawnPoint;
-        private Vector2 _bossMainPosition;
+        private Vector2 _offset;
         
         public PlayerGameObject PlayerPrefab => playerPrefab;
         public BulletGameObject PlayerBulletPrefab => playerBulletPrefab;
-        public EnemyGameObject EnemyPrefab => _enemyPrefab;
-        public BossGameObject BossPrefab => _bossPrefab;
+        public EnemyGameObject EnemyPrefab => enemyPrefab;
+        public WallGameObject WallPrefab => wallPrefab;
 
-        public Vector2 LeftSpawnPoint => _leftSpawnPoint;
-        public Vector2 RightSpawnPoint => _rightSpawnPoint;
-        public Vector2 BossMainPosition => _bossMainPosition;
+        public Vector2 Offset => _offset;
 
-        public void SetupSpawnPoints(Transform left, Transform right, Transform bossPoint)
+        public void SetupSpawnPoints(Transform offset)
         {
-            _leftSpawnPoint = left.position;
-            _rightSpawnPoint = right.position;
-            _bossMainPosition = bossPoint.position;
+            _offset = offset.position;
         }
     }
 }

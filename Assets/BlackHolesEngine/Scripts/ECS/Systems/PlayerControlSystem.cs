@@ -7,7 +7,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
 {
     public class PlayerControlSystem : IEcsRunSystem
     {
-        private EcsFilter<PlayerComponent, MoveComponent, TransformComponent> _filter;
+        private EcsFilter<PlayerComponent, MoveComponent> _filter;
         private GameViewModel _gameViewModel;
         private Camera _camera;
         
@@ -19,22 +19,23 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             }
 
             var direction = new Vector2(0f, 0f);
-            var screenMousePosition = Input.mousePosition;
+            var dx = Input.GetAxisRaw("Horizontal");
+            var dy = Input.GetAxisRaw("Vertical");
+            
+            if (dx > 0)
+            {
+                direction.x = dx;
+            }
+            else if (dy > 0)
+            {
+                direction.y = dy;
+            }
 
             foreach (var index in _filter)
             {
                 ref var move = ref _filter.Get2(index);
-                ref var transform = ref _filter.Get3(index);
-                
-                if (Input.GetMouseButton(0))
-                {
-                    var playerScreenPoint = _camera.WorldToScreenPoint(transform.Transform.position);
-                    var deltaRow = screenMousePosition - playerScreenPoint;
-                    var delta = deltaRow.normalized;
-                    direction = new Vector2(delta.x, delta.y);
-                }
 
-                move.Direction = direction;
+                move.Direction = direction.normalized;
             }
         }
     }

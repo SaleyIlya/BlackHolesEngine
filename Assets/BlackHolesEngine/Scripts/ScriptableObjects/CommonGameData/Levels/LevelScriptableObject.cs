@@ -9,16 +9,16 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ScriptableObjects.CommonGameData.L
     public class LevelScriptableObject : ScriptableObject
     {
         [SerializeField] private int levelInGameValuePrice;
-        [SerializeField] private List<float> enemyTimings;
-        [SerializeField] private float bossTiming;
+        [SerializeField] private List<Vector2> enemyCoords;
+        [SerializeField] private List<Vector2> wallsCoords;
 
         public LevelSettings GetLevelSettings()
         {
             return new LevelSettings
             {
                 LevelInGameValuePrice = levelInGameValuePrice,
-                EnemyTimings = enemyTimings,
-                BossTiming = bossTiming,
+                EnemyCoords = enemyCoords,
+                WallsCoords = wallsCoords
             };
         }
     }

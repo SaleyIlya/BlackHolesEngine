@@ -14,12 +14,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
         private EcsFilter<TriggerComponent, BulletComponent, TransformComponent> _bullets;
         private EcsFilter<TriggerComponent, EnemyComponent, TransformComponent> _enemies;
         private EcsFilter<TriggerComponent, PlayerComponent, TransformComponent> _player;
-        private EcsFilter<TriggerComponent, BossComponent, TransformComponent> _boss;
-        
+
         public void Run()
         {
             ProcessPlayer();
-            ProcessBoss();
             ProcessEnemies();
             ProcessBullets();
         }
@@ -61,31 +59,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                 }
             }
         }
-        
-        private void ProcessBoss()
-        {
-            foreach (var index in _boss)
-            {
-                ref var trigger = ref _boss.Get1(index);
 
-                if (trigger.Trigger.TriggerEnter?.Any() == true)
-                {
-                    ref var boss = ref _boss.Get2(index);
-                    boss.Hp--;
-
-                    if (boss.Hp < 0)
-                    {
-                        var obj = _boss.Get3(index).Transform.gameObject;
-                        var entity = _boss.GetEntity(index);
-                        entity.Destroy();
-                        Object.Destroy(obj);
-
-                        _gameViewModel.BossDefeatCommand.Execute();
-                    }
-                }
-            }
-        }
-        
         private void ProcessPlayer()
         {
             foreach (var index in _player)

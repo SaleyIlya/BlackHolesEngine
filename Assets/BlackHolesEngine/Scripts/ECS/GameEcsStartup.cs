@@ -13,7 +13,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
     sealed class GameEcsStartup : MonoBehaviour
     {
         public GamePrefabsScriptableObject GamePrefabsScriptableObject;
-        [SerializeField] private Transform leftSpawnPoint;
+        [SerializeField] private Transform offsetPoint;
         [SerializeField] private Transform rightSpawnPoint;
         [SerializeField] private Transform bossMainPoint;
         [SerializeField] private DeathScreenView deathScreenView;
@@ -28,9 +28,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
 
         private void Awake()
         {
-            if (leftSpawnPoint == null ||
-                rightSpawnPoint == null ||
-                bossMainPoint == null ||
+            if (offsetPoint == null ||
                 GamePrefabsScriptableObject == null)
             {
                 throw new ArgumentException("scene is not ready");
@@ -39,7 +37,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
             Camera = Camera.main;
             GameViewModel = ServiceLocator.Default.Resolve<GameViewModel>();
             
-            GamePrefabsScriptableObject.SetupSpawnPoints(leftSpawnPoint, rightSpawnPoint, bossMainPoint);
+            GamePrefabsScriptableObject.SetupSpawnPoints(offsetPoint);
 
             GameViewModel.PlayerHp.Subscribe(hp =>
                 {
@@ -75,9 +73,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
                 .Add(new PlayerControlSystem())
                 .Add(new MoveSystem())
                 .Add(new ShootSystem())
-                .Add(new SpawnEnemySystem())
-                .Add(new SpawnBossSystem())
-                .Add(new BossControlSystem())
+                .Add(new SpawnSystem())
                 .Add(new DamageSystem())
                 
                 // register one-frame components (order is important), for example:

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
 {
@@ -15,14 +16,14 @@ namespace BlackHoles.BlackHolesEngine.Scripts.DataModel
         [JsonProperty("levelInGameValuePrice"), ShowInInspector]
         public int LevelInGameValuePrice { get; set; }
         /// <summary>
-        /// Время появления врагов на уровне
+        /// Координаты появления врагов на уровне
         /// </summary>
-        [JsonProperty("enemyTimings"), ShowInInspector]
-        public List<float> EnemyTimings { get; set; }
+        [JsonProperty("enemyCoords"), ShowInInspector]
+        public List<Vector2> EnemyCoords { get; set; }
         /// <summary>
-        /// Время появления босса на уровне
+        /// Координаты появления стен на уровне
         /// </summary>
-        [JsonProperty("bossTimings"), ShowInInspector]
-        public float BossTiming { get; set; }
+        [JsonProperty("wallsCoords"), ShowInInspector]
+        public List<Vector2> WallsCoords { get; set; }
     }
 }
