@@ -15,9 +15,6 @@ namespace BlackHoles.Game
         public void Init(Sprite enemySprite)
         {
             spriteRenderer.sprite = enemySprite;
-
-            Debug.Log(Speed);
-            Debug.Log(Speed);
         }
     }
 }

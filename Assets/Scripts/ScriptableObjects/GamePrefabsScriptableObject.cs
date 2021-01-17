@@ -9,6 +9,7 @@ namespace BlackHoles.ScriptableObjects
         [SerializeField] private PlayerGameObject playerPrefab;
         [SerializeField] private BulletGameObject playerBulletPrefab;
         [SerializeField] private EnemyGameObject _enemyPrefab;
+        [SerializeField] private BossGameObject _bossPrefab;
 
         private Vector2 _leftSpawnPoint;
         private Vector2 _rightSpawnPoint;
@@ -16,6 +17,7 @@ namespace BlackHoles.ScriptableObjects
         public PlayerGameObject PlayerPrefab => playerPrefab;
         public BulletGameObject PlayerBulletPrefab => playerBulletPrefab;
         public EnemyGameObject EnemyPrefab => _enemyPrefab;
+        public BossGameObject BossPrefab => _bossPrefab;
 
         public Vector2 LeftSpawnPoint => _leftSpawnPoint;
         public Vector2 RightSpawnPoint => _rightSpawnPoint;

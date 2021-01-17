@@ -18,3 +18,5 @@ MonoBehaviour:
     type: 3}
   _enemyPrefab: {fileID: 7047663756387937247, guid: 9a4fce0319688d14289ebbc4c06a079f,
     type: 3}
+  _bossPrefab: {fileID: 765791780675558392, guid: f5433312a49f9084783361447c67a3d9,
+    type: 3}

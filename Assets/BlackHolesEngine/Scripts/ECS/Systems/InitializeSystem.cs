@@ -16,6 +16,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
         {
             PlayerInit();
             InitEnemiesSpawners();
+            InitBossSpawner();
         }
 
         private void InitEnemiesSpawners()
@@ -34,6 +35,19 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                     Random.Range(0f, 1f));
                 spawn.ObjectToSpawn = _gamePrefabsScriptableObject.EnemyPrefab.gameObject;
             }
+        }
+
+        private void InitBossSpawner()
+        {
+            var bossSpawner = _world.NewEntity();
+            bossSpawner.Get<BossComponent>();
+            ref var spawn = ref bossSpawner.Get<SpawnComponent>();
+            spawn.TimeToSpawn = _gameViewModel.LevelSettings.BossTiming;
+            spawn.SpawnPoint = Vector2.Lerp(
+                _gamePrefabsScriptableObject.LeftSpawnPoint,
+                _gamePrefabsScriptableObject.RightSpawnPoint,
+                0.5f);
+            spawn.ObjectToSpawn = _gamePrefabsScriptableObject.BossPrefab.gameObject;
         }
 
         private void PlayerInit()
