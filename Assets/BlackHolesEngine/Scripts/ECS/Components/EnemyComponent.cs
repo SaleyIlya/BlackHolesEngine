@@ -2,6 +2,7 @@
 {
     public struct EnemyComponent
     {
-        
+        public float TimeToChangeDirection;
+        public float TimeToMove;
     }
 }
