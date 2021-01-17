@@ -90,7 +90,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
                 .FirstOrDefault(x => enemiesItems.Any(y => y.Key == x.ItemId))?
                 .ItemId;
             var bossesItems = Model.GameItems
-                .Where(x => x.Value.ItemType == ItemType.Boss)
+                .Where(x => x.Value.ItemType == ItemType.Wall)
                 .ToDictionary(x => x.Key, y => y.Value);
             var selectedBossSkinId = Model.SelectedPlayerItems
                 .FirstOrDefault(x => bossesItems.Any(y => y.Key == x.ItemId))?

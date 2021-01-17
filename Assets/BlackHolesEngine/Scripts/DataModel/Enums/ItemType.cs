@@ -8,6 +8,6 @@
         Skin,
         Weapon,
         Enemy,
-        Boss
+        Wall
     }
 }

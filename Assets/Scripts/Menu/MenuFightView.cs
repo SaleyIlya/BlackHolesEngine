@@ -45,7 +45,7 @@ namespace BlackHoles.Menu
                 .Where(x => x.Value.ItemType == ItemType.Enemy)
                 .ToDictionary(x => x.Key, y => y.Value);
             _bossItems = _viewModel.GameItems
-                .Where(x => x.Value.ItemType == ItemType.Boss)
+                .Where(x => x.Value.ItemType == ItemType.Wall)
                 .ToDictionary(x => x.Key, y => y.Value);
             
             _viewModel.PlayerSelectedItems

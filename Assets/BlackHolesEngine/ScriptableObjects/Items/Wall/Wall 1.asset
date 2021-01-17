@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9856ed480184b269128222ba8c933ae, type: 3}
-  m_Name: Boss 1
+  m_Name: Wall 1
   m_EditorClassIdentifier: 
   itemId: b1622018-01d4-40d8-b422-d61727e75a5f
   inGameValueCoast: 0
@@ -23,4 +23,4 @@ MonoBehaviour:
   propertyGrowValue: 0
   itemMaxLevel: 0
   effects: 
-  itemIcon: {fileID: 21300000, guid: 2fc3606ad6d989041828c5797a122ddf, type: 3}
+  itemIcon: {fileID: 21300000, guid: fe15311a72a8bcb46bc753792feba316, type: 3}
