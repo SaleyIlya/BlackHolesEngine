@@ -14,8 +14,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
     {
         public GamePrefabsScriptableObject GamePrefabsScriptableObject;
         [SerializeField] private Transform offsetPoint;
-        [SerializeField] private Transform rightSpawnPoint;
-        [SerializeField] private Transform bossMainPoint;
         [SerializeField] private DeathScreenView deathScreenView;
         [SerializeField] private VictoryScreenView victoryScreenView;
         

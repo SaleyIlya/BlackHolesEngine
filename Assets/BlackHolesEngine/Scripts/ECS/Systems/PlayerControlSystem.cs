@@ -1,4 +1,5 @@
-﻿using BlackHoles.BlackHolesEngine.Scripts.ECS.Components;
+﻿using System;
+using BlackHoles.BlackHolesEngine.Scripts.ECS.Components;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -22,11 +23,11 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             var dx = Input.GetAxisRaw("Horizontal");
             var dy = Input.GetAxisRaw("Vertical");
             
-            if (dx > 0)
+            if (Math.Abs(dx) > Mathf.Epsilon)
             {
                 direction.x = dx;
             }
-            else if (dy > 0)
+            else if (Math.Abs(dy) > Mathf.Epsilon)
             {
                 direction.y = dy;
             }

@@ -1,6 +1,7 @@
 ﻿using BlackHoles.BlackHolesEngine.Scripts.ECS.Components;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
 using BlackHoles.Game;
+using BlackHoles.ScriptableObjects;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
     public class SpawnSystem : IEcsRunSystem
     {
         private GameViewModel _gameViewModel;
+        private GamePrefabsScriptableObject _gamePrefabsScriptableObject;
 
         private EcsWorld _world;
         private EcsFilter<EnemyComponent, SpawnComponent> _enemies;
@@ -36,14 +38,14 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             
             foreach (var index in _walls)
             {
-                ref var spawn = ref _enemies.Get2(index);
+                ref var spawn = ref _walls.Get1(index);
 
                 spawn.TimeToSpawn -= Time.deltaTime;
 
                 if (spawn.TimeToSpawn <= 0)
                 {
                     SpawnWall(spawn.ObjectToSpawn, spawn.SpawnPoint);
-                    _enemies.GetEntity(index).Destroy();
+                    _walls.GetEntity(index).Destroy();
                 }
             }
         }
@@ -62,14 +64,21 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             enemyEntity.Get<TriggerComponent>().Trigger = enemyObject.GetComponent<TriggerDetector>();
             
             ref var moveComponent = ref enemyEntity.Get<MoveComponent>();
-            moveComponent.Direction = new Vector2(0, -1);
+            moveComponent.Direction = new Vector2(0, 0);
             moveComponent.Speed = enemyGameObject.Speed;
+            
+            ref var shootComponent = ref enemyEntity.Get<ShootComponent>();
+            shootComponent.BulletPrefab = _gamePrefabsScriptableObject.PlayerBulletPrefab;
+            shootComponent.ShootDelay = enemyGameObject.ShootDelay;
+            shootComponent.ShootPoints = enemyGameObject.ShootPoints.ToArray();
+            shootComponent.TimeSinceLastShoot = 0f;
+            shootComponent.ShootDirection = new Vector2(0f, 1f);
         }
         
         private void SpawnWall(GameObject objToSpawn, Vector3 spawnPoint)
         {
             var wallObject = Object.Instantiate(objToSpawn, spawnPoint, Quaternion.identity);
-            var wallGameObject = wallObject.GetComponent<EnemyGameObject>();
+            var wallGameObject = wallObject.GetComponent<WallGameObject>();
             
             wallGameObject.Init(_gameViewModel.BossSprite);
         }

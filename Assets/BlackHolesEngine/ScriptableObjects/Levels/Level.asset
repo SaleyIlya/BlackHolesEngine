@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Level
   m_EditorClassIdentifier: 
   levelInGameValuePrice: 100
-  enemyTimings:
-  - 1.5
-  - 3
-  - 3.7
-  - 3.7
-  bossTiming: 5
+  enemyCoords:
+  - {x: 4, y: 4}
+  wallsCoords:
+  - {x: 2, y: 2}
