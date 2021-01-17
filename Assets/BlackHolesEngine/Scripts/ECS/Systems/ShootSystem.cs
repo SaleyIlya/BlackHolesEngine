@@ -9,7 +9,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
     public class ShootSystem : IEcsRunSystem
     {
         private EcsWorld _world;
-        private EcsFilter<ShootComponent> _filter;
+        private EcsFilter<ShootComponent, MoveComponent> _filter;
         private GameViewModel _gameViewModel;
 
         public void Run()

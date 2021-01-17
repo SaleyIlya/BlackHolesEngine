@@ -16,6 +16,8 @@ MonoBehaviour:
     type: 3}
   playerBulletPrefab: {fileID: 8317441036197213544, guid: 19ae3084a2e49be4aa4061136c687abc,
     type: 3}
+  enemyBulletPrefab: {fileID: 8317441036197213544, guid: f1a8bc15c0215fd4eac13f99bdcf1b1a,
+    type: 3}
   enemyPrefab: {fileID: 7047663756387937247, guid: 9a4fce0319688d14289ebbc4c06a079f,
     type: 3}
   wallPrefab: {fileID: 5152425147802540888, guid: e84cd7c235316cb4e80cc5cb11c0428f,

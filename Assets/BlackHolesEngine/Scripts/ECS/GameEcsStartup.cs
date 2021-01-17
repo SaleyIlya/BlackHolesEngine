@@ -73,6 +73,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
                 .Add(new ShootSystem())
                 .Add(new SpawnSystem())
                 .Add(new DamageSystem())
+                .Add(new RotationSystem())
                 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()

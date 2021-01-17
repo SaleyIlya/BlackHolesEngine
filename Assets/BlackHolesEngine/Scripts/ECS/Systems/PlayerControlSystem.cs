@@ -8,7 +8,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
 {
     public class PlayerControlSystem : IEcsRunSystem
     {
-        private EcsFilter<PlayerComponent, MoveComponent> _filter;
+        private EcsFilter<PlayerComponent, MoveComponent, ShootComponent> _filter;
         private GameViewModel _gameViewModel;
         private Camera _camera;
         
@@ -32,11 +32,19 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                 direction.y = dy;
             }
 
+            direction = direction.normalized;
+
             foreach (var index in _filter)
             {
                 ref var move = ref _filter.Get2(index);
+                ref var shoot = ref _filter.Get3(index);
 
-                move.Direction = direction.normalized;
+                move.Direction = direction;
+                
+                if (direction != Vector2.zero)
+                {
+                    shoot.ShootDirection = direction;
+                }
             }
         }
     }
