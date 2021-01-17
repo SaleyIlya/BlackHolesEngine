@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Level
   m_EditorClassIdentifier: 
   levelInGameValuePrice: 100
+  enemyTimings:
+  - 1.5
+  - 3
+  - 3.7
+  - 3.7
+  bossTiming: 5

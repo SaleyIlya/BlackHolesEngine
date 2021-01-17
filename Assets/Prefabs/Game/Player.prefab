@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: 3641827502366328593}
   - {fileID: 5898860299290369068}
   speed: 7
-  shootDelay: 0.5
+  shootDelay: 0.3
 --- !u!1 &7911901762356286978
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5c19ab8151456396c311f1ccb79e1f, type: 3}
   m_Name: GamePrefabs
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
-  playerBulletPrefab: {fileID: 0}
+  playerPrefab: {fileID: 2315825085163494654, guid: bf18e2153ca03e84eab492bb531ef37c,
+    type: 3}
+  playerBulletPrefab: {fileID: 8317441036197213544, guid: 19ae3084a2e49be4aa4061136c687abc,
+    type: 3}
+  _enemyPrefab: {fileID: 7047663756387937247, guid: 9a4fce0319688d14289ebbc4c06a079f,
+    type: 3}

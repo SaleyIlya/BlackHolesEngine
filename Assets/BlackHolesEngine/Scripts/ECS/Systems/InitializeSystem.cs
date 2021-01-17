@@ -15,6 +15,25 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
         public void Init()
         {
             PlayerInit();
+            InitEnemiesSpawners();
+        }
+
+        private void InitEnemiesSpawners()
+        {
+            var levelSettings = _gameViewModel.LevelSettings;
+
+            foreach (var enemyTiming in levelSettings.EnemyTimings)
+            {
+                var newEnemySpawner = _world.NewEntity();
+                newEnemySpawner.Get<EnemyComponent>();
+                ref var spawn = ref newEnemySpawner.Get<SpawnComponent>();
+                spawn.TimeToSpawn = enemyTiming;
+                spawn.SpawnPoint = Vector2.Lerp(
+                    _gamePrefabsScriptableObject.LeftSpawnPoint,
+                    _gamePrefabsScriptableObject.RightSpawnPoint,
+                    Random.Range(0f, 1f));
+                spawn.ObjectToSpawn = _gamePrefabsScriptableObject.EnemyPrefab.gameObject;
+            }
         }
 
         private void PlayerInit()
@@ -26,6 +45,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             player.Get<PlayerComponent>();
             player.Get<MoveComponent>().Speed = playerGameObject.Speed;
             player.Get<TransformComponent>().Transform = playerGameObject.transform;
+            
             ref var shootComponent = ref player.Get<ShootComponent>();
             shootComponent.BulletPrefab = _gamePrefabsScriptableObject.PlayerBulletPrefab;
             shootComponent.ShootDelay = playerGameObject.ShootDelay;

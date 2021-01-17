@@ -1,3 +1,4 @@
+using System;
 using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
 using BlackHoles.BlackHolesEngine.Scripts.ECS.Systems;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
@@ -10,11 +11,24 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
     sealed class GameEcsStartup : MonoBehaviour
     {
         public GamePrefabsScriptableObject GamePrefabsScriptableObject;
-        public GameViewModel GameViewModel;
-        public Camera Camera;
+        [SerializeField] private Transform leftSpawnPoint;
+        [SerializeField] private Transform rightSpawnPoint;
         
-        EcsWorld _world;
-        EcsSystems _systems;
+        [HideInInspector] public GameViewModel GameViewModel;
+        [HideInInspector] public Camera Camera;
+        
+        private EcsWorld _world;
+        private EcsSystems _systems;
+
+        private void Awake()
+        {
+            if (leftSpawnPoint == null || rightSpawnPoint == null || GamePrefabsScriptableObject == null)
+            {
+                throw new ArgumentException("scene is not ready");
+            }
+            
+            GamePrefabsScriptableObject.SetupSpawnPoints(leftSpawnPoint, rightSpawnPoint);
+        }
 
         void Start () {
             // void can be switched to IEnumerator for support coroutines.
@@ -35,6 +49,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
                 .Add(new PlayerControlSystem())
                 .Add(new MoveSystem())
                 .Add(new ShootSystem())
+                .Add(new SpawnEnemySystem())
                 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
