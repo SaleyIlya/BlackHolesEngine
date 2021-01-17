@@ -46,6 +46,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
 
                 if (trigger.Trigger.TriggerEnter?.Any() == true)
                 {
+                    var isLastEnemy = _enemies.GetEntitiesCount() == 1;
 
                     if (trigger.Trigger.TriggerEnter?.Any(x => x.CompareTag("EnemyDestroyer")) == true)
                     {
@@ -56,6 +57,11 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                     var entity = _enemies.GetEntity(index);
                     entity.Destroy();
                     Object.Destroy(obj);
+
+                    if (isLastEnemy)
+                    {
+                        _gameViewModel.BossDefeatCommand.Execute();
+                    }
                 }
             }
         }
