@@ -68,7 +68,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             moveComponent.Speed = enemyGameObject.Speed;
             
             ref var shootComponent = ref enemyEntity.Get<ShootComponent>();
-            shootComponent.BulletPrefab = _gamePrefabsScriptableObject.PlayerBulletPrefab;
+            shootComponent.BulletPrefab = _gamePrefabsScriptableObject.EnemyBulletPrefab;
             shootComponent.ShootDelay = enemyGameObject.ShootDelay;
             shootComponent.ShootPoints = enemyGameObject.ShootPoints.ToArray();
             shootComponent.TimeSinceLastShoot = 0f;

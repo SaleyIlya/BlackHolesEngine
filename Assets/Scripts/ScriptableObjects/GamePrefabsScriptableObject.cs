@@ -8,6 +8,7 @@ namespace BlackHoles.ScriptableObjects
     {
         [SerializeField] private PlayerGameObject playerPrefab;
         [SerializeField] private BulletGameObject playerBulletPrefab;
+        [SerializeField] private BulletGameObject enemyBulletPrefab;
         [SerializeField] private EnemyGameObject enemyPrefab;
         [SerializeField] private WallGameObject wallPrefab;
 
@@ -15,6 +16,7 @@ namespace BlackHoles.ScriptableObjects
         
         public PlayerGameObject PlayerPrefab => playerPrefab;
         public BulletGameObject PlayerBulletPrefab => playerBulletPrefab;
+        public BulletGameObject EnemyBulletPrefab => enemyBulletPrefab;
         public EnemyGameObject EnemyPrefab => enemyPrefab;
         public WallGameObject WallPrefab => wallPrefab;
 
