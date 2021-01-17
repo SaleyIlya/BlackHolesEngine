@@ -36,7 +36,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                     var bulletEntity = _world.NewEntity();
 
                     bulletEntity.Get<BulletComponent>();
-                    bulletEntity.Get<TransformComponent>().Transform = newBullet.transform;
+                    bulletEntity.Get<RigidbodyComponent>().Rigidbody2D = newBullet.GetComponent<Rigidbody2D>();
                     bulletEntity.Get<TriggerComponent>().Trigger = newBullet.GetComponent<TriggerDetector>();
                     
                     ref var bulletMove = ref bulletEntity.Get<MoveComponent>();

@@ -86,7 +86,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             var player = _world.NewEntity();
             player.Get<PlayerComponent>();
             player.Get<MoveComponent>().Speed = playerGameObject.Speed;
-            player.Get<TransformComponent>().Transform = playerGameObject.transform;
+            player.Get<RigidbodyComponent>().Rigidbody2D = playerGameObject.GetComponent<Rigidbody2D>();
             player.Get<TriggerComponent>().Trigger = playerGameObject.GetComponent<TriggerDetector>();
             
             ref var shootComponent = ref player.Get<ShootComponent>();

@@ -11,9 +11,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
         private GameViewModel _gameViewModel;
         private EcsWorld _world;
         
-        private EcsFilter<TriggerComponent, BulletComponent, TransformComponent> _bullets;
-        private EcsFilter<TriggerComponent, EnemyComponent, TransformComponent> _enemies;
-        private EcsFilter<TriggerComponent, PlayerComponent, TransformComponent> _player;
+        private EcsFilter<TriggerComponent, BulletComponent, RigidbodyComponent> _bullets;
+        private EcsFilter<TriggerComponent, EnemyComponent, RigidbodyComponent> _enemies;
+        private EcsFilter<TriggerComponent, PlayerComponent, RigidbodyComponent> _player;
 
         public void Run()
         {
@@ -30,7 +30,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
 
                 if (trigger.Trigger.TriggerEnter?.Any() == true)
                 {
-                    var obj = _bullets.Get3(index).Transform.gameObject;
+                    var obj = _bullets.Get3(index).Rigidbody2D.gameObject;
                     var entity = _bullets.GetEntity(index);
                     entity.Destroy();
                     Object.Destroy(obj);
@@ -52,7 +52,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                         _gameViewModel.PlayerGetDamageCommand.Execute(1);
                     }
                     
-                    var obj = _enemies.Get3(index).Transform.gameObject;
+                    var obj = _enemies.Get3(index).Rigidbody2D.gameObject;
                     var entity = _enemies.GetEntity(index);
                     entity.Destroy();
                     Object.Destroy(obj);

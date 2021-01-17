@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelInGameValuePrice: 100
   enemyCoords:
-  - {x: 4, y: 4}
+  - {x: 3, y: 4}
   wallsCoords:
   - {x: 2, y: 2}

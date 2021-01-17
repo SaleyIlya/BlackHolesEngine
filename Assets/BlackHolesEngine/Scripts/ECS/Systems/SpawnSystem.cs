@@ -60,7 +60,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             var enemyEntity = _world.NewEntity();
 
             enemyEntity.Get<EnemyComponent>();
-            enemyEntity.Get<TransformComponent>().Transform = enemyObject.transform;
+            enemyEntity.Get<RigidbodyComponent>().Rigidbody2D = enemyObject.GetComponent<Rigidbody2D>();
             enemyEntity.Get<TriggerComponent>().Trigger = enemyObject.GetComponent<TriggerDetector>();
             
             ref var moveComponent = ref enemyEntity.Get<MoveComponent>();

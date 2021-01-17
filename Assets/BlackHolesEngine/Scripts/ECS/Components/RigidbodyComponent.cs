@@ -2,8 +2,8 @@
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Components
 {
-    public struct TransformComponent
+    public struct RigidbodyComponent
     {
-        public Transform Transform;
+        public Rigidbody2D Rigidbody2D;
     }
 }
