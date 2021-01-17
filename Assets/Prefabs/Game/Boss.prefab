@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3757868445898362621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 4312184058418134044}
   - component: {fileID: 2502844410735142303}
   - component: {fileID: -5785536528158615934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
   - {fileID: 1146861468224797182}
   - {fileID: 3757868445898362621}
   - {fileID: 5691597053154424318}
-  shootDelay: 0.5
-  hp: 12
+  shootDelay: 0.4
+  hp: 20
 --- !u!114 &4312184058418134044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5691597053154424318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -236,7 +236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1146861468224797182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}

@@ -80,7 +80,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                         entity.Destroy();
                         Object.Destroy(obj);
 
-                        _gameViewModel.FinishLevelCommand.Execute();
+                        _gameViewModel.BossDefeatCommand.Execute();
                     }
                 }
             }

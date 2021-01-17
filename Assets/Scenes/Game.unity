@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 387253076}
   - component: {fileID: 387253075}
   - component: {fileID: 387253074}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyDestroyerTrigger
   m_TagString: EnemyDestroyer
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 635465319}
   - component: {fileID: 635465318}
   - component: {fileID: 635465317}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletDestroyerTrigger
   m_TagString: BulletDestroyer
   m_Icon: {fileID: 0}
@@ -636,6 +636,10 @@ MonoBehaviour:
   leftSpawnPoint: {fileID: 221984903}
   rightSpawnPoint: {fileID: 124867400}
   bossMainPoint: {fileID: 1117580432}
+  deathScreenView: {fileID: 3610710950186537761, guid: d45b63caac84a5b4e971d2cd91df3171,
+    type: 3}
+  victoryScreenView: {fileID: 6373842350488427560, guid: f7f84ff21874f88448fa9f8797dc26ad,
+    type: 3}
   Camera: {fileID: 0}
 --- !u!4 &1085774698
 Transform:
@@ -717,7 +721,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

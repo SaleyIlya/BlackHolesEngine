@@ -19,6 +19,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
         public ReactiveCommand ChangePlayerAttemptCommand { get; }
         public ReactiveCommand ResetPlayerHpCommand { get; }
         public ReactiveCommand FinishLevelCommand { get; }
+        public ReactiveCommand BossDefeatCommand { get; }
 
         public LevelSettings LevelSettings { get; private set; }
         
@@ -42,6 +43,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels
             ChangePlayerAttemptCommand = new ReactiveCommand();
             ResetPlayerHpCommand = new ReactiveCommand();
             FinishLevelCommand = new ReactiveCommand();
+            BossDefeatCommand = new ReactiveCommand();
 
             InitLevelCommand.Subscribe(InitNewLevelGameData);
             SetPauseCommand.Subscribe(isPause =>

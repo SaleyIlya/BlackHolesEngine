@@ -2,8 +2,10 @@ using System;
 using BlackHoles.BlackHolesEngine.Scripts.Core.ServiceLocator;
 using BlackHoles.BlackHolesEngine.Scripts.ECS.Systems;
 using BlackHoles.BlackHolesEngine.Scripts.MVVM.ViewModels;
+using BlackHoles.BlackHolesEngine.Scripts.MVVM.Views.GameViews;
 using BlackHoles.ScriptableObjects;
 using Leopotam.Ecs;
+using UniRx;
 using UnityEngine;
 
 namespace BlackHoles.BlackHolesEngine.Scripts.ECS 
@@ -14,6 +16,9 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
         [SerializeField] private Transform leftSpawnPoint;
         [SerializeField] private Transform rightSpawnPoint;
         [SerializeField] private Transform bossMainPoint;
+        [SerializeField] private DeathScreenView deathScreenView;
+        [SerializeField] private VictoryScreenView victoryScreenView;
+        
         
         [HideInInspector] public GameViewModel GameViewModel;
         [HideInInspector] public Camera Camera;
@@ -31,14 +36,31 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
                 throw new ArgumentException("scene is not ready");
             }
             
+            Camera = Camera.main;
+            GameViewModel = ServiceLocator.Default.Resolve<GameViewModel>();
+            
             GamePrefabsScriptableObject.SetupSpawnPoints(leftSpawnPoint, rightSpawnPoint, bossMainPoint);
+
+            GameViewModel.PlayerHp.Subscribe(hp =>
+                {
+                    if (hp > 0) return;
+                    
+                    GameViewModel.SetPauseCommand.Execute(true);
+                    Instantiate(deathScreenView);
+                })
+                .AddTo(this);
+
+            GameViewModel.BossDefeatCommand.Subscribe(_ =>
+                {
+                    GameViewModel.SetPauseCommand.Execute(true);
+                    Instantiate(victoryScreenView);
+                })
+                .AddTo(this);
         }
 
         void Start () {
             // void can be switched to IEnumerator for support coroutines.
-            Camera = Camera.main;
-            GameViewModel = ServiceLocator.Default.Resolve<GameViewModel>();
-            
+
             _world = new EcsWorld ();
             _systems = new EcsSystems (_world);
 #if UNITY_EDITOR
