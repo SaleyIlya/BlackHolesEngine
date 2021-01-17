@@ -42,7 +42,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                     }
 
                     enemy.TimeToMove = Random.Range(0.5f, 1.5f);
-                    enemy.TimeToChangeDirection = Random.Range(0.5f, 1.5f);
+                    enemy.TimeToChangeDirection = Random.Range(0.1f, 0.5f);
 
                     shoot.ShootDirection = move.Direction;
                     

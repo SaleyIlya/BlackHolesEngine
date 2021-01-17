@@ -80,7 +80,10 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
 
         private void PlayerInit()
         {
-            var playerGameObject = Object.Instantiate(_gamePrefabsScriptableObject.PlayerPrefab);
+            var playerPos = _gamePrefabsScriptableObject.Offset + new Vector2(3, 0);
+
+            var playerGameObject =
+                Object.Instantiate(_gamePrefabsScriptableObject.PlayerPrefab, playerPos, Quaternion.identity);
             playerGameObject.Init(_gameViewModel.PlayerSprite);
             
             var player = _world.NewEntity();
