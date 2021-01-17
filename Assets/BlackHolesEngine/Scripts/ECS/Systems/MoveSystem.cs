@@ -17,9 +17,6 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
                 return;
             }
 
-            var direction = new Vector2(0f, 0f);
-            var screenMousePosition = Input.mousePosition;
-
             foreach (var index in _filter)
             {
                 ref var move = ref _filter.Get1(index);

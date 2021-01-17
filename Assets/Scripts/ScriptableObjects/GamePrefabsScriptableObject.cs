@@ -13,6 +13,7 @@ namespace BlackHoles.ScriptableObjects
 
         private Vector2 _leftSpawnPoint;
         private Vector2 _rightSpawnPoint;
+        private Vector2 _bossMainPosition;
         
         public PlayerGameObject PlayerPrefab => playerPrefab;
         public BulletGameObject PlayerBulletPrefab => playerBulletPrefab;
@@ -21,11 +22,13 @@ namespace BlackHoles.ScriptableObjects
 
         public Vector2 LeftSpawnPoint => _leftSpawnPoint;
         public Vector2 RightSpawnPoint => _rightSpawnPoint;
+        public Vector2 BossMainPosition => _bossMainPosition;
 
-        public void SetupSpawnPoints(Transform left, Transform right)
+        public void SetupSpawnPoints(Transform left, Transform right, Transform bossPoint)
         {
             _leftSpawnPoint = left.position;
             _rightSpawnPoint = right.position;
+            _bossMainPosition = bossPoint.position;
         }
     }
 }

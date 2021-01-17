@@ -45,7 +45,12 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             
             var bossEntity = _world.NewEntity();
 
-            ref var bossComponent = ref bossEntity.Get<BossComponent>().Hp;
+            ref var bossComponent = ref bossEntity.Get<BossComponent>();
+            bossComponent.Hp = bossGameObject.Hp;
+            bossComponent.MaxLeftX = _gamePrefabsScriptableObject.LeftSpawnPoint.x;
+            bossComponent.MaxRightX = _gamePrefabsScriptableObject.RightSpawnPoint.x;
+            bossComponent.MainY = _gamePrefabsScriptableObject.BossMainPosition.y;
+            bossComponent.CurrentPointToMove = new Vector2(0f, bossComponent.MainY);
 
             ref var shootComponent = ref bossEntity.Get<ShootComponent>();
             shootComponent.BulletPrefab = _gamePrefabsScriptableObject.PlayerBulletPrefab;
@@ -55,9 +60,11 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS.Systems
             shootComponent.ShootDirection = new Vector2(0f, -1f);
             
             bossEntity.Get<TransformComponent>().Transform = bossObject.transform;
+            
             ref var moveComponent = ref bossEntity.Get<MoveComponent>();
             
-            moveComponent.Direction = new Vector2(0, -1);
+            Vector2 bossPosition = bossObject.transform.position;
+            moveComponent.Direction = (bossComponent.CurrentPointToMove - bossPosition).normalized;
             moveComponent.Speed = bossGameObject.Speed;
         }
     }

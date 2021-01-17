@@ -13,6 +13,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
         public GamePrefabsScriptableObject GamePrefabsScriptableObject;
         [SerializeField] private Transform leftSpawnPoint;
         [SerializeField] private Transform rightSpawnPoint;
+        [SerializeField] private Transform bossMainPoint;
         
         [HideInInspector] public GameViewModel GameViewModel;
         [HideInInspector] public Camera Camera;
@@ -22,12 +23,15 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
 
         private void Awake()
         {
-            if (leftSpawnPoint == null || rightSpawnPoint == null || GamePrefabsScriptableObject == null)
+            if (leftSpawnPoint == null ||
+                rightSpawnPoint == null ||
+                bossMainPoint == null ||
+                GamePrefabsScriptableObject == null)
             {
                 throw new ArgumentException("scene is not ready");
             }
             
-            GamePrefabsScriptableObject.SetupSpawnPoints(leftSpawnPoint, rightSpawnPoint);
+            GamePrefabsScriptableObject.SetupSpawnPoints(leftSpawnPoint, rightSpawnPoint, bossMainPoint);
         }
 
         void Start () {
@@ -51,6 +55,7 @@ namespace BlackHoles.BlackHolesEngine.Scripts.ECS
                 .Add(new ShootSystem())
                 .Add(new SpawnEnemySystem())
                 .Add(new SpawnBossSystem())
+                .Add(new BossControlSystem())
                 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
